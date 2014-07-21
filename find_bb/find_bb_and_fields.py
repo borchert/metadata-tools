@@ -93,7 +93,8 @@ while exitScript != 'x':
 
     bbFile = r'D:/drive/Map Library Projects/MGS/Records/' + record + '/converted/' + shapeName + '_bb.txt'
     f = open(bbFile, 'w')
-    f.write('North: ')
+    boundingBoxOutput = 'North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west), '\n'
+    """f.write('North: ')
     f.write(str(north))
     f.write('\n')
     f.write('South: ')
@@ -104,7 +105,8 @@ while exitScript != 'x':
     f.write('\n')
     f.write('West: ')
     f.write(str(west))
-    f.write('\n')
+    f.write('\n')"""
+    f.write(boundingBoxOutput)
     f.close()
 
     fFields = findFields(shapeName, record, extraDir)
