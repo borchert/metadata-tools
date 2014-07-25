@@ -1,12 +1,22 @@
 import arcpy
 import os
 
-def processShapefile(shapeName, record, extraDir):
+def getDrivePath():
+    while True:
+        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
+                              "Drive):  ")
+        if not os.path.exists(drivePath):
+            print 'That path does not work.  Please try again.'
+        else:
+            break
+    return drivePath
+
+
+def processShapefile(shapeName, defaultPath, record, extraDir):
     shpExt = shapeName+'.shp'
     record = record
     extraDir = extraDir
-    defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
-
+    defaultPath = defaultPath
     if extraDir == '':
         inlayer = os.path.join(defaultPath,record,shpExt)
         outBoundingBox = os.path.join(defaultPath,record,shapeName+'_BB.shp')
@@ -53,12 +63,11 @@ def processShapefile(shapeName, record, extraDir):
 
     print '---------------------\n'
 
-def findFields(shapeName, record, extraDir):
+def findFields(shapeName, defaultPath, record, extraDir):
     fieldDict = {}
     shpExt = shapeName+'.shp'
     record = record
     extraDir = extraDir
-    defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
 
     if extraDir == '':
         inlayer = os.path.join(defaultPath,record,shpExt)
@@ -83,32 +92,31 @@ while exitScript != 'x':
     shapeName = raw_input('Shapefile Name: ')
     record = raw_input("Record Number: ")
     extraDir = raw_input('Extra directory: ')
+    userName = os.environ.get('USERNAME')
 
-    extent = processShapefile(shapeName, record, extraDir)
+    if os.path.exists(r'D:\drive\\'):
+        defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
+    elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
+        defaultPath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS\Records\\')
+    else:
+        getDrivePath()
+
+
+    extent = processShapefile(shapeName, defaultPath, record, extraDir)
 
     north = extent['yMax']
     south = extent['yMin']
     east = extent['xMax']
     west = extent['xMin']
 
-    bbFile = r'D:/drive/Map Library Projects/MGS/Records/' + record + '/converted/' + shapeName + '_bb.txt'
+    bbFile = defaultPath + record + '/converted/' + shapeName + '_bb.txt'
     f = open(bbFile, 'w')
-    f.write('North: ')
-    f.write(str(north))
-    f.write('\n')
-    f.write('South: ')
-    f.write(str(south))
-    f.write('\n')
-    f.write('East: ')
-    f.write(str(east))
-    f.write('\n')
-    f.write('West: ')
-    f.write(str(west))
-    f.write('\n')
+    boundingBoxOutput = 'North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west), '\n'
+    f.write(boundingBoxOutput)
     f.close()
 
-    fFields = findFields(shapeName, record, extraDir)
-    fieldsFile = r'D:/drive/Map Library Projects/MGS/Records/' + record + '/converted/' + shapeName + '_fields.txt'
+    fFields = findFields(shapeName, defaultPath, record, extraDir)
+    fieldsFile = defaultPath + record + '/converted/' + shapeName + '_fields.txt'
     f = open(fieldsFile, 'w')
     for key, value in fFields.items():
         fieldOut = key+'('+value+')\n'
