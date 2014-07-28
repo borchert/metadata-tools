@@ -19,8 +19,6 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
     elif option == 1:
         importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
     else:
-        record = validateInput("record","Record Number: ", defaultPath)
-        extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
         importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
 
     if importE00File.endswith('.e00'):
@@ -33,7 +31,7 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
     else:
         envDir = os.path.join(defaultPath,record,extraDir)
 
-    outDirectory = os.path.join(defaultPath, record + '\converted\GISfiles', importE00File[:-4])
+    outDirectory = os.path.join(defaultPath, record + '\converted\GISfiles', importE00File)
 
     outName = str(e00Ext[:-4])
 
@@ -55,7 +53,7 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
     # Execute ImportFromE00
     arcpy.ImportFromE00_conversion(e00Ext, outDirectory, outName)
 
-    envDir = os.path.join(defaultPath,record + '\converted\GISfiles', importE00File[:-4], outName)
+    envDir = os.path.join(defaultPath,record + '\converted\GISfiles', e00Ext[:-4], outName)
     env.workspace = envDir
     fc = arcpy.ListFeatureClasses()
 
@@ -110,6 +108,8 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
 
 
 def validateInput(type, msg, defaultPath, record = None, extraDir = None):
+    print 'Record Number:',str(record)
+    print 'Extra Dir:',str(extraDir)
     val = raw_input(msg)
     if type == 'record':
         valDir = os.path.join(defaultPath,val)
@@ -136,6 +136,7 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
                 if type == 'e00Name':
                     val += '.e00'
                     valDir = os.path.join(defaultPath,record,extraDir,val)
+                    #print 'Made it here - ', valDir
 
             else:
                 break
@@ -165,12 +166,13 @@ convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=0)
 while True:
 
     exitScript = raw_input("Press x to quit, n to enter a new record, or enter to continue with same inputs:   ")
-    print '\n'
-    print '--------------------\n'
+    print '\n--------------------\n'
 
     if exitScript in ('x', 'X'):
         break
     elif exitScript in ('n', 'N'):
+        record = validateInput("record","Record Number: ", defaultPath)
+        extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
         convertE00toShapefile(importE00File, defaultPath, record, extraDir)
     else:
         convertE00toShapefile(importE00File, defaultPath, record, extraDir, option = 1)
