@@ -14,8 +14,6 @@ def getDrivePath():
 
 def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=None):
 
-    print importE00File
-
     if option == 0:
         pass
     elif option == 1:
@@ -24,8 +22,6 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
         record = validateInput("record","Record Number: ", defaultPath)
         extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
         importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
-
-    print importE00File
 
     if importE00File.endswith('.e00'):
         e00Ext = importE00File
@@ -38,11 +34,8 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
         envDir = os.path.join(defaultPath,record,extraDir)
 
     outDirectory = os.path.join(defaultPath, record + '\converted\GISfiles', importE00File[:-4])
-    print outDirectory
 
-    outName = str(importE00File[:-4])
-
-    print outName
+    outName = str(e00Ext[:-4])
 
     # Set environment settings
     if os.path.exists(outDirectory):
@@ -70,9 +63,10 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
         if x[:10] != 'annotation':
             # Set local variables
             inFeatures = os.path.join(outDirectory,outName,x)
-            outLocation = outDirectory + "\\shapefiles"
+            print 'inFeatures -', inFeatures
 
-            print '67'
+            outLocation = outDirectory + "\\shapefiles"
+            print 'outLocation -', outLocation
 
             if os.path.exists(outLocation):
                 pass
@@ -80,24 +74,38 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
                 os.makedirs(outLocation)
                 print 'Created: ' + str(outLocation)
 
-            print '73'
-
             outFeatureClass = importE00File + '_' + x + ".shp"
+            print 'outFeatureClass - ', outFeatureClass
 
-            print '77'
+            errorLog = outDirectory + '\_errorLog.txt'
 
-            # Execute FeatureClassToFeatureClass
-            arcpy.FeatureClassToFeatureClass_conversion(inFeatures, outLocation,
-                                                        outFeatureClass)
+            try:
+                # Execute FeatureClassToFeatureClass
+                arcpy.FeatureClassToFeatureClass_conversion(inFeatures, outLocation,
+                                                            outFeatureClass)
 
-            featureCount = arcpy.GetCount_management(x)
+            except:
+                e = open(errorLog, 'a')
+                error = [x, '- could not convert to SHP']
+                e.write(''.join(error))
+                e.close()
 
-            featureCountFile = outLocation + 'featureCount.txt'
+            try:
+                featureCount = arcpy.GetCount_management(x)
+            except:
+                e = open(errorLog, 'a')
+                error = [x, '- could not count features']
+                e.write(''.join(error))
+                e.close()
+
+            featureCountFile = outDirectory + '\_featureCount.txt'
             f = open(featureCountFile, 'a')
             writeOutput = str(x)+' - '+ str(featureCount)+' features\n'
             f.write(writeOutput)
 
-    f.close()
+
+            f.close()
+
     print 'Complete\n-------------------------\n'
 
 
@@ -126,14 +134,14 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
                     valDir = os.path.join(defaultPath,record,val)
 
                 if type == 'e00Name':
-                    val += '.shp'
+                    val += '.e00'
                     valDir = os.path.join(defaultPath,record,extraDir,val)
 
             else:
                 break
         except:
             break
-    if val.endswith('.shp'):
+    if val.endswith('.e00'):
         return val[:-4]
     else:
         return val
