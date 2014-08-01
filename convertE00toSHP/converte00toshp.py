@@ -136,7 +136,6 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
                 if type == 'e00Name':
                     val += '.e00'
                     valDir = os.path.join(defaultPath,record,extraDir,val)
-                    #print 'Made it here - ', valDir
 
             else:
                 break
