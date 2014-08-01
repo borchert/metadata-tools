@@ -46,9 +46,9 @@ def processShapefile(shapeName, defaultPath, record, extraDir, option = None):
 
     print 'Convert vertices to points'
     # Convert vertices to points
-    arcpy.FeatureVerticesToPoints_management (outBoundingBox, outBoundingBoxVertices, 'All'
-    )
+    arcpy.FeatureVerticesToPoints_management(outBoundingBox, outBoundingBoxVertices, 'All')
 
+    print 'Calculate X/Y for vertices'
     # Calculate X/Y for vertices
     arcpy.AddXY_management(outBoundingBoxVertices)
 
@@ -88,6 +88,8 @@ def findFields(shapeName, defaultPath, record, extraDir):
     return fieldDict
 
 def validateInput(type, msg, defaultPath, record = None, extraDir = None):
+    print 'Record Number:',str(record)
+    print 'Extra Dir:',str(extraDir)
     val = raw_input(msg)
     if type == 'record':
         valDir = os.path.join(defaultPath,val)
@@ -95,14 +97,13 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
     if type == 'extraDir':
         valDir = os.path.join(defaultPath,record,val)
         error = 'That extra directory doesn\'t exist. Please try again.\n'
-    if type == 'shapeName':
+    if type == 'Shapefile':
         val += '.shp'
         valDir = os.path.join(defaultPath,record,extraDir, val)
         error = 'That shapefile doesn\'t exist. Please try again.\n'
 
     while True:
         try:
-            print valDir
             if not os.path.exists(valDir):
                 print error
                 val = raw_input(msg)
@@ -113,7 +114,7 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
                     valDir = os.path.join(defaultPath,record,val)
 
                 if type == 'shapeName':
-                    val += '.shp'
+                    val += 'shp'
                     valDir = os.path.join(defaultPath,record,extraDir,val)
 
             else:
@@ -125,12 +126,12 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
     else:
         return val
 
-
 print 'Importing ArcPy takes forever, I know.'
 
 userName = os.environ.get('USERNAME')
 
 # Find location of Drive path
+
 if os.path.exists(r'D:\drive\\'):
     defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
 elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
@@ -138,56 +139,116 @@ elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
 else:
     getDrivePath()
 
+method = raw_input('Please enter B for batch processing or S for single processing:  ')
 
-record = validateInput("record","Record Number: ", defaultPath)
-extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
-shapeName = validateInput("shapeName", "Shapefile name: ", defaultPath, record, extraDir)
+if method in ('s', 'S'):
+    shapeName = validateInput("shapeName", "Shapefile name: ", defaultPath, record, extraDir)
+    record = validateInput("record","Record Number: ", defaultPath)
+    extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
 
-while True:
+    while True:
 
-    extent = processShapefile(shapeName, defaultPath, record, extraDir, 0)
+        extent = processShapefile(shapeName, defaultPath, record, extraDir, 0)
 
-    north = extent['yMax']
-    south = extent['yMin']
-    east = extent['xMax']
-    west = extent['xMin']
+        north = extent['yMax']
+        south = extent['yMin']
+        east = extent['xMax']
+        west = extent['xMin']
 
-    bbFile = defaultPath + record + '/converted/' + shapeName + '_bb.txt'
-    f = open(bbFile, 'w')
-    boundingBoxOutput = 'North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west), '\n'
-    print 'Writing bounding box text file.'
-    for x in boundingBoxOutput:
-        f.write(x)
-    print 'Closing bounding box text file.'
-    f.close()
+        bbFile = os.path.join(defaultPath,record + '/converted',shapeName + '_bb.txt')
+        f = open(bbFile, 'w')
 
-    fFields = findFields(shapeName, defaultPath, record, extraDir)
-    fieldsFile = defaultPath + record + '/converted/' + shapeName + '_fields.txt'
-    f = open(fieldsFile, 'w')
-    print 'Writing fields text file.'
-    for key, value in fFields.items():
-        fieldOut = key+'('+value+')\n'
-        f.write(fieldOut)
-    print 'Closing fields text file.\n'
-    print '---------------------------\n'
-    f.close()
+        print 'Writing bounding box text file.'
+        boundingBoxOutput = ['North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west)]
+        f.write(''.join(boundingBoxOutput))
+        print 'Closing bounding box text file.'
+        f.close()
 
-    exitScript = raw_input("Press x to quit, n to enter a new record, or enter to continue with same inputs:   ")
-    print '\n'
+        fFields = findFields(shapeName, defaultPath, record, extraDir)
 
-    if exitScript in ('x', 'X'):
-        break
-    elif exitScript in ('n', 'N'):
-        processShapefile(shapeName, defaultPath, record, extraDir)
-    else:
-        processShapefile(shapeName, defaultPath, record, extraDir, option=1)
+        fieldsFile = os.path.join(defaultPath,record + '/converted',shapeName + '_fields.txt')
 
+        f = open(fieldsFile, 'w')
+        print 'Writing fields text file.'
+        for key, value in fFields.items():
+            fieldOut = key+'('+value+')\n'
+            f.write(fieldOut)
+        print 'Closing fields text file.\n'
+        print '---------------------------\n'
+        f.close()
 
+        exitScript = raw_input("Press x to quit, n to enter a new record, or enter to continue with same inputs:   ")
+        print '\n'
 
-
-
-
-
-
+        if exitScript in ('x', 'X'):
+            break
+        elif exitScript in ('n', 'N'):
+            record = validateInput("record","Record Number: ", defaultPath)
+            extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
+            processShapefile(shapeName, defaultPath, record, extraDir)
+        else:
+            processShapefile(shapeName, defaultPath, record, extraDir, option=1)
 
 
+elif method in ('b', 'B'):
+    record = validateInput("record","Record Number: ", defaultPath)
+    extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
+
+    builtPath = os.path.join(defaultPath,record,extraDir)
+
+    for root, dirs, files in os.walk(builtPath):
+        for file in files:
+            if file.endswith(".shp"):
+                shp = file[:-4]
+                try:
+                    try:
+                        extent = processShapefile(shp, defaultPath, record, extraDir, 0)
+                    except:
+                        print 'ProcessShapefile failed'
+
+                    north = extent['yMax']
+                    south = extent['yMin']
+                    east = extent['xMax']
+                    west = extent['xMin']
+
+                    bbFile = os.path.join(defaultPath,record + '/converted',shp + '_bb.txt')
+
+                    outPath = os.path.join(defaultPath,record + '/converted')
+
+                    if not os.path.exists(outPath):
+                            os.makedirs(outPath)
+
+                    f = open(bbFile, 'w')
+                    print 'Writing bounding box text file.'
+                    boundingBoxOutput = ['North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west)]
+                    f.write(''.join(boundingBoxOutput))
+                    print 'Closing bounding box text file.'
+                    f.close()
+
+                    fFields = findFields(shp, defaultPath, record, extraDir)
+
+                    fieldsFile = os.path.join(defaultPath,record + '/converted',shp + '_fields.txt')
+
+                    f = open(fieldsFile, 'w')
+                    print 'Writing fields text file.'
+                    for key, value in fFields.items():
+                        fieldOut = key+'('+value+')\n'
+                        f.write(fieldOut)
+                    print 'Closing fields text file.\n'
+                    print '---------------------------\n'
+                    f.close()
+
+                    print shp+'.shp completed processing successfully.\n'
+                    print '---------------------------\n'
+
+                except:
+                    errorFile = os.path.join(defaultPath, record+'/converted',shp+'_FAILED.txt')
+                    f = open(errorFile)
+                    errorOutput = shp + '- Failed'
+                    f.write(errorOutput)
+                    f.close()
+                    print '\n\n\n\n---------------------------\n',shp,' - FAILED','\n---------------------------\n\n\n\n'
+
+else:
+    raw_input('You dun messed up.  Press enter to exit.')
+    exit()
