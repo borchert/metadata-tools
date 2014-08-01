@@ -11,12 +11,19 @@ def getDrivePath():
             break
     return drivePath
 
+def processShapefile(shapeName, defaultPath, record, extraDir, option = None):
 
-def processShapefile(shapeName, defaultPath, record, extraDir):
+    if option == 0:
+        pass
+    elif option == 1:
+        shapeName = validateInput("shapeName", "Shapefile name: ", defaultPath, record, extraDir)
+    else:
+        record = validateInput("record","Record Number: ", defaultPath)
+        extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
+        shapeName = validateInput("shapeName", "Shapefile name: ", defaultPath, record, extraDir)
+
     shpExt = shapeName+'.shp'
-    record = record
-    extraDir = extraDir
-    defaultPath = defaultPath
+
     if extraDir == '':
         inlayer = os.path.join(defaultPath,record,shpExt)
         outBoundingBox = os.path.join(defaultPath,record,shapeName+'_BB.shp')
@@ -60,9 +67,6 @@ def processShapefile(shapeName, defaultPath, record, extraDir):
 
     return {'xMin':xMinValue, 'xMax':xMaxValue,'yMin':yMinValue, 'yMax':yMaxValue}
 
-
-    print '---------------------\n'
-
 def findFields(shapeName, defaultPath, record, extraDir):
     fieldDict = {}
     shpExt = shapeName+'.shp'
@@ -83,26 +87,65 @@ def findFields(shapeName, defaultPath, record, extraDir):
 
     return fieldDict
 
+def validateInput(type, msg, defaultPath, record = None, extraDir = None):
+    val = raw_input(msg)
+    if type == 'record':
+        valDir = os.path.join(defaultPath,val)
+        error = 'That record number doesn\'t exist.  Please try again.\n'
+    if type == 'extraDir':
+        valDir = os.path.join(defaultPath,record,val)
+        error = 'That extra directory doesn\'t exist. Please try again.\n'
+    if type == 'shapeName':
+        val += '.shp'
+        valDir = os.path.join(defaultPath,record,extraDir, val)
+        error = 'That shapefile doesn\'t exist. Please try again.\n'
 
-exitScript = ''
+    while True:
+        try:
+            print valDir
+            if not os.path.exists(valDir):
+                print error
+                val = raw_input(msg)
+                if type == 'record':
+                    valDir = os.path.join(defaultPath,val)
+
+                if type == 'extraDir':
+                    valDir = os.path.join(defaultPath,record,val)
+
+                if type == 'shapeName':
+                    val += '.shp'
+                    valDir = os.path.join(defaultPath,record,extraDir,val)
+
+            else:
+                break
+        except:
+            break
+    if val.endswith('.shp'):
+        return val[:-4]
+    else:
+        return val
+
+
 print 'Importing ArcPy takes forever, I know.'
 
-while exitScript != 'x':
+userName = os.environ.get('USERNAME')
 
-    shapeName = raw_input('Shapefile Name: ')
-    record = raw_input("Record Number: ")
-    extraDir = raw_input('Extra directory: ')
-    userName = os.environ.get('USERNAME')
-
-    if os.path.exists(r'D:\drive\\'):
-        defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
-    elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-        defaultPath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS\Records\\')
-    else:
-        getDrivePath()
+# Find location of Drive path
+if os.path.exists(r'D:\drive\\'):
+    defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
+elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
+    defaultPath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS\Records\\')
+else:
+    getDrivePath()
 
 
-    extent = processShapefile(shapeName, defaultPath, record, extraDir)
+record = validateInput("record","Record Number: ", defaultPath)
+extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
+shapeName = validateInput("shapeName", "Shapefile name: ", defaultPath, record, extraDir)
+
+while True:
+
+    extent = processShapefile(shapeName, defaultPath, record, extraDir, 0)
 
     north = extent['yMax']
     south = extent['yMin']
@@ -112,15 +155,39 @@ while exitScript != 'x':
     bbFile = defaultPath + record + '/converted/' + shapeName + '_bb.txt'
     f = open(bbFile, 'w')
     boundingBoxOutput = 'North: ', str(north), '\nSouth: ', str(south), '\nEast: ', str(east), '\nWest: ', str(west), '\n'
-    f.write(boundingBoxOutput)
+    print 'Writing bounding box text file.'
+    for x in boundingBoxOutput:
+        f.write(x)
+    print 'Closing bounding box text file.'
     f.close()
 
     fFields = findFields(shapeName, defaultPath, record, extraDir)
     fieldsFile = defaultPath + record + '/converted/' + shapeName + '_fields.txt'
     f = open(fieldsFile, 'w')
+    print 'Writing fields text file.'
     for key, value in fFields.items():
         fieldOut = key+'('+value+')\n'
         f.write(fieldOut)
+    print 'Closing fields text file.\n'
+    print '---------------------------\n'
     f.close()
 
-    exitScript = raw_input("Press x to quit or enter to continue:   ")
+    exitScript = raw_input("Press x to quit, n to enter a new record, or enter to continue with same inputs:   ")
+    print '\n'
+
+    if exitScript in ('x', 'X'):
+        break
+    elif exitScript in ('n', 'N'):
+        processShapefile(shapeName, defaultPath, record, extraDir)
+    else:
+        processShapefile(shapeName, defaultPath, record, extraDir, option=1)
+
+
+
+
+
+
+
+
+
+
