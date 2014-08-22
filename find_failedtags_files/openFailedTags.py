@@ -1,7 +1,27 @@
 import subprocess
 import os
 
-failedTags = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\Documentation\failedtagscleanup.txt'
+def getDrivePath():
+    while True:
+        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
+                              "Drive):  ")
+        if not os.path.exists(drivePath):
+            print 'That path does not work.  Please try again.'
+        else:
+            break
+    return drivePath
+
+userName = os.environ.get('USERNAME')
+
+if os.path.exists(r'D:\drive\\'):
+    drivePath = r'D:\drive\Map Library Projects\MGS'
+elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
+    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
+else:
+    drivePath = getDrivePath()
+
+
+failedTags = drivePath + r'\Documentation\failedtagscleanup.txt'
 
 f = open(failedTags, 'r')
 content = f.readlines()

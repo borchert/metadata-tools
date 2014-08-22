@@ -1,14 +1,33 @@
 import os
 import subprocess
 
-startDir = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\Records'
-failedLineage = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedLineage.txt'
-failedAbstract = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedAbstract.txt'
-failedHorizontal = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedHorizontal.txt'
-failedMapUnits = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedMapUnits.txt'
-failedPurpose = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedPurpose.txt'
-failedPubDate = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedPubDate.txt'
-failedAll = r'C:\Users\Chris\Google Drive\Map Library Projects\MGS\failedAll.txt'
+def getDrivePath():
+    while True:
+        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
+                              "Drive):  ")
+        if not os.path.exists(drivePath):
+            print 'That path does not work.  Please try again.'
+        else:
+            break
+    return drivePath
+
+userName = os.environ.get('USERNAME')
+
+if os.path.exists(r'D:\drive\\'):
+    drivePath = r'D:\drive\Map Library Projects\MGS'
+elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
+    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
+else:
+    drivePath = getDrivePath()
+
+startDir = drivePath + '\\Records'
+failedLineage = drivePath + '\\failedLineage.txt'
+failedAbstract = drivePath + '\\failedAbstract.txt'
+failedHorizontal = drivePath + '\\failedHorizontal.txt'
+failedMapUnits = drivePath + '\\failedMapUnits.txt'
+failedPurpose = drivePath + '\\failedPurpose.txt'
+failedPubDate = drivePath + '\\failedPubDate.txt'
+failedAll = drivePath + '\\failedAll.txt'
 
 fileList = [failedAbstract,failedLineage,failedHorizontal,failedMapUnits,failedPurpose,failedPubDate,failedAll]
 
