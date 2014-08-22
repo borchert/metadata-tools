@@ -76,23 +76,22 @@ for x in contentStrip:
 
         dataSet = 0
         holder = 0
+        metaDict = {}
 
-        print file_list
+       # print file_list
 
         for i, x in enumerate(contentStrip):
 
-
-            #outputFile = os.path.join(drivePath)
-
             if 'bgpgp' in contentStrip[0]:
-                print 'Skipping this STUPID broken FILE\n'
+                #print 'Skipping this STUPID broken FILE\n'
                 break
 
                 # Maybe working?
             if 'Horizontal Positional Accuracy' in x:
                 if len(contentStrip[i]) != 30:
                     hpa = x[31:]
-                    print 'HPA = ',hpa
+                    metaDict['hpa'] = hpa
+                    #print 'HPA = ',hpa
 
             # Maybe?
             if 'Purpose' in x:
@@ -102,10 +101,13 @@ for x in contentStrip:
                     purpose = contentStrip[i-2]
                 title = purpose
                 if len(purpose) <= 5:
-                    print 'Purpose/title unavailable'
+                    #print 'Purpose/title unavailable'
+                    metaDict['purpose'] = 'Purpose and title unavailable'
                 else:
-                    print 'Purpose = ', purpose
-                    print 'Title = ', title
+                    #print 'Purpose = ', purpose
+                    #print 'Title = ', title
+                    metaDict['purpose'] = purpose
+                    metaDict['title'] = purpose
 
             # Maybe?
             if 'Lineage' in x:
@@ -114,30 +116,43 @@ for x in contentStrip:
                 else:
                     lineage = contentStrip[i-2]
                 if len(lineage) <= 5:
-                    print 'Lineage unavailable'
+                    metaDict['lineage'] = 'Lineage unavailable'
+                    #print 'Lineage unavailable'
                 else:
-                    print 'Lineage = ', lineage
+                    #print 'Lineage = ', lineage
+                    metaDict['lineage'] = lineage
 
             if 'Publication Date' in x:
                 if len(contentStrip[i]) != 16:
                     pubDate = x[17:]
-                    print 'Publication Date = ', pubDate
+                    #print 'Publication Date = ', pubDate
+                    metaDict['pubDate'] = pubDate
 
             if 'Time Period of Content' in x:
                 if len(contentStrip[i]) != 22:
                     timePeriod = x[23:]
-                    print 'Time Period of Content = ', timePeriod
+                    #print 'Time Period of Content = ', timePeriod
 
                 elif contentStrip[i-1] in ('Purpose', 'Abstract'):
-                    print 'Time Period of Content not available'
-                    pass
+                    timePeriod= 'Time Period of Content not available'
+
                 else:
                     timePeriod = contentStrip[i-2]
-                    print 'Time Period of Content = ', timePeriod
+                    #print 'Time Period of Content = ', timePeriod
+                metaDict['time'] = timePeriod
 
             if 'Publisher' in x:
                 if len(contentStrip[i]) != 9:
                     publisher = x[10:]
-                    print 'Publisher = ', publisher
+                    #print 'Publisher = ', publisher
+                else:
+                    publisher = 'Publisher not available'
+                metaDict['publisher'] = publisher
 
         f.close()
+
+        metaDictTxt = os.path.join(read_file[:-4]+ '_metaDict.txt')
+        f = open(metaDictTxt, 'w')
+        f.write(str(metaDict))
+        f.close()
+
