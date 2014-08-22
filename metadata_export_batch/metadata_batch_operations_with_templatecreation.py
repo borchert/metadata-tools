@@ -1,6 +1,26 @@
+__author__ = 'mart3565'
 import arcpy
 import os.path
 import time
+
+def getDrivePath():
+    while True:
+        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
+                              "Drive):  ")
+        if not os.path.exists(drivePath):
+            print 'That path does not work.  Please try again.'
+        else:
+            break
+    return drivePath
+
+userName = os.environ.get('USERNAME')
+
+if os.path.exists(r'D:\drive\\'):
+    drivePath = r'D:\drive\Map Library Projects\MGS'
+elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
+    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
+else:
+    drivePath = getDrivePath()
 
 #Get the record and path to XMLs
 record = raw_input("Enter record number: ")
@@ -9,7 +29,8 @@ blankMXD = r'D:\drive\Map Library Projects\MGS\Metadata Templates\blank.mxd'
 
 #Static vars
 TRANSLATOR = "C:\\Program Files\\ArcGIS\\Desktop10.2\\Metadata\\Translator\\ARCGIS2FGDC.xml"
-base_path = "D:\\drive\\Map Library Projects\\MGS\\Records"
+ISOTRANSLATOR = "C:\\Program Files\\ArcGIS\\Desktop10.2\\Metadata\\Translator\\ARCGIS2ISO19139.xml"
+base_path = os.path.join(drivePath,"Records")
 
 #set workspace
 arcpy.env.workspace = os.path.join(base_path, record, record_path)
@@ -24,9 +45,13 @@ OUTPUT = os.path.join(base_path,record,"final_XMLs")
 
 def import_XML():
 
-    importXMLfile = raw_input("Enter XML template: ")
-    importXMLext = importXMLfile+'.xml'
-    importXMLpath = os.path.join(base_path,record,'final_XMLs\template',importXMLext)
+    baseSHP = raw_input('Enter shapefile to use as template: ')
+    shpPath = os.path.join(base_path, record,record_path,baseSHP)
+    templatePath = os.path.join(base_path,record,'final_XMLs\template\template.xml')
+    print shpPath
+
+    arcpy.ExportMetadata_conversion (shpPath, ISOTRANSLATOR,
+    templatePath)
 
     #get a list of all the SHPs
     files = arcpy.ListFiles("*.shp")
@@ -40,9 +65,10 @@ def import_XML():
 
         tic = time.time()
         print 'Trying to import XML to: ', f
-        arcpy.ImportMetadata_conversion (importXMLpath,"FROM_ESRIISO",f, "DISABLED")
+        arcpy.ImportMetadata_conversion (templatePath,"FROM_ESRIISO",f, "DISABLED")
 
-        '''# get the map document
+        # Trying to get thumbnail, postponing for now.
+        """# get the map document
         mxd = arcpy.mapping.MapDocument(blankMXD)
         # get the data frame
         df = arcpy.mapping.ListDataFrames(mxd,"*")[0]
@@ -54,7 +80,7 @@ def import_XML():
         mxd.makeThumbnail()
         mxd.save()
         arcpy.mapping.RemoveLayer(df, newlayer)
-        mxd.save()'''
+        mxd.save()"""
 
         toc = time.time()
         s = toc-tic
