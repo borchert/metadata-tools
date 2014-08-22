@@ -20,56 +20,67 @@ elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
 else:
     drivePath = getDrivePath()
 
-test = r'c:/users/mart3565/desktop/test.txt'
-toDo = []
-f = open(test)
-content = f.readlines()
-count = 0
-for x in content:
-    if count == len(content)-1:
-        item = x[25:]
-    else:
-        item = x[25:-1]
-    toDo.append(item)
-    count+=1
+toDo = os.path.join(drivePath,'parse_meta_toDo.txt')
+
+with open(toDo) as f:
+    content = f.readlines()
+    contentStrip = []
+    holder = ''
+    for x in content:
+        if len(x)>2:
+            if x.endswith('\n'):
+                if x.startswith('\t'):
+                    holder = x[-1:].strip()
+                else:
+                    holder = x[:-1].strip()
+        else:
+            holder = x
+        contentStrip.append(holder)
 
 listToDo = []
-for x in toDo:
-    fullPath = os.path.join(drivePath, x+'.txt')
+for x in contentStrip:
+    fullPath = os.path.join(drivePath,x[25:]+'.txt')
+
     if os.path.isfile(fullPath):
-        #print 'FOUND - ',fullPath
         listToDo.append(fullPath)
     else:
         print 'MISSING - ', fullPath
 
 
 total = 0
+doneList = []
+failedList = []
 
 for x in listToDo:
-    f = x
-    text = open(f)
+    workingFile = x
+    fullPath = x[:len(drivePath)+24]
+    print '\nWorking on:',x
+    text = open(x)
     read_text = text.read()
     search = [m.start() for m in re.finditer('Data Set Name', read_text)]
 
     find_sets = []
-
-    '''test_list = []
-    test = ['bgnta','bgpga','bgpgp','dhpt','dkln','foln','hyln','lkpg','paan','papg','plsln','rdln1','rdln2','rdpt']
-
-    for x in test:
-        upper = x.upper()
-        test_list.append(x)
-        test_list.append(upper)'''
+    print search
 
     for x in search:
-        data_set =  read_text[x+15:x+20]
-        if data_set not in find_sets:
-            find_sets.append(data_set)
+        data_set = read_text[x+15:x+20]
+        if len(data_set) != 0:
+            if data_set not in find_sets:
+                find_sets.append(data_set)
 
     find_sets_stripped =[]
 
     for x in find_sets:
-        holder = x.strip(' ')
+        holder = ''
+        if x.endswith('\n'):
+            if x.startswith('\t'):
+                holder = x[-1:].strip()
+            else:
+                holder = x[:-1].strip()
+        else:
+            holder = x
+        contentStrip.append(holder)
+        holder = x.strip()
         if holder.isalnum():
             find_sets_stripped.append(holder)
 
@@ -77,23 +88,19 @@ for x in listToDo:
 
     for x in find_sets_stripped:
 
-        #if x in test_list:
         search_set = [m.start() for m in re.finditer(find_sets_stripped[find_sets_stripped.index(x)], read_text)]
-        #print x, '-', search_set, 'len:', len(search_set)
         for i in search_set:
             if search_set[0] not in master_list:
                 master_list.append(search_set[0])
 
     item = 0
 
-
-    #print master_list
     if len(master_list) != 0:
         for x in master_list:
-
-            file_name= read_text[master_list[item]:master_list[item]+5]
+            file_name= read_text[master_list[item]:master_list[item]+5].strip()
             print 'file name =', file_name
             outDir = fullPath[:58]
+            print outDir
             text_file = os.path.join(outDir,file_name+'.txt')
 
             print 'text file =', text_file
@@ -110,7 +117,29 @@ for x in listToDo:
             item+=1
             print 'Completed'
             total +=1
+
+            if workingFile not in doneList:
+                doneList.append(workingFile)
+
     else:
+        if workingFile not in failedList:
+            failedList.append(workingFile)
         print 'No items found'
 
+
+print doneList
 print 'Total Completed: ', total
+
+foundMeta = os.path.join(drivePath,'metaParsed.txt')
+f = open(foundMeta,'a')
+for x in doneList:
+    f.write(x)
+    f.write('\n')
+f.close
+
+noMeta = os.path.join(drivePath,'noMetaToParse.txt')
+f = open(noMeta,'a')
+for x in failedList:
+    f.write(x)
+    f.write('\n')
+f.close()
