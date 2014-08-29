@@ -45,10 +45,10 @@ OUTPUT = os.path.join(base_path,record,"final_XMLs")
 
 def import_XML():
 
-    baseSHP = raw_input('Enter shapefile to use as template: ')
-    shpPath = os.path.join(base_path, record,record_path,baseSHP)
+    #baseSHP = raw_input('Enter shapefile to use as template: ')
+    #shpPath = os.path.join(base_path, record,record_path,baseSHP)
     templatePath = os.path.join(base_path,record,'final_XMLs\template\template.xml')
-    print shpPath
+    #print shpPath
 
     arcpy.ExportMetadata_conversion (shpPath, ISOTRANSLATOR,
     templatePath)
