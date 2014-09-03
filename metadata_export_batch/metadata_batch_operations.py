@@ -50,7 +50,7 @@ def import_XML():
         #shapefilePath = os.path.join(base_path,record,record_path,f)
 
         tic = time.time()
-        print 'Trying to import XML to: ', f
+        print 'Trying to import XML to: \n', f
         arcpy.ImportMetadata_conversion (importXMLpath,"FROM_FGDC",f, "DISABLED")
 
         '''# get the map document
@@ -100,7 +100,6 @@ def export_xml():
     #loop through XMLs and export the metadata for each to the final_XMLs directory
     for f in files:
 
-        
         if os.path.splitext(f)[1] == '.shp':
             if os.path.isabs(f) == False:
                 filePath = os.path.join(OUTPUT,
@@ -111,7 +110,8 @@ def export_xml():
             pass
         else:
             if os.path.isabs(f) == False:
-                filePath = os.path.join(OUTPUT,f)
+                filePath = os.path.join(OUTPUT,
+                    os.path.split(os.path.splitext(f)[0])[1],'.xml')
             else:
                 filePath = os.path.join(OUTPUT,os.path.split(f)[1])
 
@@ -131,7 +131,7 @@ def export_xml():
         print 'Trying to export XML for: ', f
         arcpy.ExportMetadata_conversion(f,
             TRANSLATOR,
-            os.path.join(OUTPUT, f[:f.find(".")]+ ".xml"))
+            os.path.join(OUTPUT, os.path.splitext(os.path.split(f)[1])[0]+ ".xml"))
 
 
 imp_xml = raw_input('Do you want to batch import XML? ')
