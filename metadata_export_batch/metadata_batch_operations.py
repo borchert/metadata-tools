@@ -2,6 +2,7 @@ import arcpy
 import os.path, os,fnmatch
 import time
 import pdb
+import glob
 
 #Get the record and path to XMLs
 record = raw_input("Enter record number: ")
@@ -29,9 +30,6 @@ def import_XML():
     
     importXMLpath = importXMLpath.replace('"','')
     
-    #importXMLext = importXMLfile+'.xml'
-    #importXMLpath = os.path.join(base_path,record,'converted',importXMLext)
-    print importXMLpath
     #get a list of all the SHPs
     if record_path == "converted\GISfiles":
         files = []
@@ -42,14 +40,14 @@ def import_XML():
                         files.append(os.path.join(dirpath,f))
                     
     else:
-        files = arcpy.ListFiles("*.shp")
+        files = glob.glob(os.path.join(arcpy.env.workspace,"*.shp"))
 
     totalTimeTic = time.time()
 
     #loop through SHPs and import the metadata for each
     for f in files:
 
-        shapefilePath = os.path.join(base_path,record,record_path,f)
+        #shapefilePath = os.path.join(base_path,record,record_path,f)
 
         tic = time.time()
         print 'Trying to import XML to: ', f
@@ -96,15 +94,17 @@ def export_xml():
                     if fnmatch.fnmatch(f,"*.xml"):
                         files.append(os.path.join(dirpath,f))
     else:
-        files = arcpy.ListFiles("*.xml")
+         files = glob.glob(os.path.join(arcpy.env.workspace,"*.shp"))
 
 
     #loop through XMLs and export the metadata for each to the final_XMLs directory
     for f in files:
 
-        if f[len(f)-7:len(f)-4] == 'shp':
+        
+        if os.path.splitext(f)[1] == '.shp':
             if os.path.isabs(f) == False:
-                filePath = os.path.join(OUTPUT,f[:-8]+'.xml')
+                filePath = os.path.join(OUTPUT,
+                    os.path.split(os.path.splitext(f)[0])[1],'.xml')
             else:
                 filePath = os.path.join(OUTPUT,os.path.split(f)[1])
         elif f[len(f)-7:len(f)-4] == 'txt':
