@@ -1,6 +1,7 @@
 import arcpy
-import os.path
+import os.path, os,fnmatch
 import time
+import pdb
 
 #Get the record and path to XMLs
 record = raw_input("Enter record number: ")
@@ -24,12 +25,24 @@ OUTPUT = os.path.join(base_path,record,"final_XMLs")
 
 def import_XML():
 
-    importXMLfile = raw_input("Enter XML template: ")
-    importXMLext = importXMLfile+'.xml'
-    importXMLpath = os.path.join(base_path,record,'final_XMLs\template',importXMLext)
-
+    importXMLpath = raw_input("Enter path to XML template: ")
+    
+    importXMLpath = importXMLpath.replace('"','')
+    
+    #importXMLext = importXMLfile+'.xml'
+    #importXMLpath = os.path.join(base_path,record,'converted',importXMLext)
+    print importXMLpath
     #get a list of all the SHPs
-    files = arcpy.ListFiles("*.shp")
+    if record_path == "converted\GISfiles":
+        files = []
+        for dirpath,dirnames,filenames in os.walk(os.path.join(base_path,record,record_path)):
+            if dirpath.endswith("shapefiles"):
+                for f in filenames:
+                    if fnmatch.fnmatch(f,"*.shp"):
+                        files.append(os.path.join(dirpath,f))
+                    
+    else:
+        files = arcpy.ListFiles("*.shp")
 
     totalTimeTic = time.time()
 
@@ -40,7 +53,7 @@ def import_XML():
 
         tic = time.time()
         print 'Trying to import XML to: ', f
-        arcpy.ImportMetadata_conversion (importXMLpath,"FROM_ESRIISO",f, "DISABLED")
+        arcpy.ImportMetadata_conversion (importXMLpath,"FROM_FGDC",f, "DISABLED")
 
         '''# get the map document
         mxd = arcpy.mapping.MapDocument(blankMXD)
@@ -75,18 +88,32 @@ def export_xml():
     OUTPUT = os.path.join(base_path,record,"final_XMLs")
 
     #get a list of all the XMLs
-    files = arcpy.ListFiles("*.xml")
-    print files
+    if record_path == "converted\GISfiles":
+        files = []
+        for dirpath,dirnames,filenames in os.walk(os.path.join(base_path,record,record_path)):
+            if dirpath.endswith("shapefiles"):
+                for f in filenames:
+                    if fnmatch.fnmatch(f,"*.xml"):
+                        files.append(os.path.join(dirpath,f))
+    else:
+        files = arcpy.ListFiles("*.xml")
+
 
     #loop through XMLs and export the metadata for each to the final_XMLs directory
     for f in files:
 
         if f[len(f)-7:len(f)-4] == 'shp':
-            filePath = os.path.join(OUTPUT,f[:-8]+'.xml')
+            if os.path.isabs(f) == False:
+                filePath = os.path.join(OUTPUT,f[:-8]+'.xml')
+            else:
+                filePath = os.path.join(OUTPUT,os.path.split(f)[1])
         elif f[len(f)-7:len(f)-4] == 'txt':
             pass
         else:
-            filePath = os.path.join(OUTPUT,f)
+            if os.path.isabs(f) == False:
+                filePath = os.path.join(OUTPUT,f)
+            else:
+                filePath = os.path.join(OUTPUT,os.path.split(f)[1])
 
         print filePath
 
