@@ -50,28 +50,14 @@ def export_xml(input_path):
         for f in files:
             if f.endswith('shp'):
                 inFile = os.path.join(root, f)
-                outFile = os.path.join((f[:-4]+'.xml').lower())
+                outFile = os.path.join(root,'exported_fgdc',(f[:-4]+'.xml'))
                 ws = os.path.join(root)
-                print root
-                print f
-                print inFile
-                print outFile
-                print translator
-                raw_input()
+                if os.path.isfile(outFile):
+                    print 'Removing', outFile
+                    os.remove(outFile)
 
                 print 'Trying to export XML for: ', f
                 arcpy.ExportMetadata_conversion(inFile, translator, outFile)
-                raw_input()
-            else:
-                print 'FOUND SOMETHING ELSE'
-
-
-    '''#set the output path for export metadata function
-        print 'Trying to export XML for: ', f
-        arcpy.ExportMetadata_conversion(f,
-            TRANSLATOR,
-            os.path.join(OUTPUT, os.path.splitext(os.path.split(f)[1])[0]+ ".xml"))'''
-
 
 drivePath = find_Drive.main()
 
