@@ -51,7 +51,7 @@ def export_xml(input_path):
         for f in files:
             if f.endswith('shp'):
                 inFile = os.path.join(root, f)
-                outFile = os.path.join(importPath[:-11],'exported_fgdc',(f[:-4]+'.xml'))
+                outFile = os.path.join(outputDir,f[:-4]+'.xml')
                 print outFile
                 if os.path.isfile(outFile):
                     print 'Removing', outFile
@@ -60,24 +60,29 @@ def export_xml(input_path):
                 print 'Trying to export XML for: ', f
                 arcpy.ExportMetadata_conversion(inFile, translator, outFile)
 
+def export_SHP_from_GDB(input_path):
+    for root, dirs, files in os.walk(importPath):
+        for d in dirs:
+            if d.endswith('.gdb'):
+                print 'Working on -', d
+                env.workspace = os.path.join(root, d)
+                fcList = arcpy.ListFeatureClasses()
+                outDirectory = os.path.join(root,'shapefiles')
+                print outDirectory
+                if not os.path.isdir(outDirectory):
+                    os.mkdir(outDirectory)
+                    print 'Created -', outDirectory
+                #for feature in fcList:
+                arcpy.FeatureClassToShapefile_conversion(fcList, outDirectory)
+
+
 drivePath = find_Drive.main()
-
 importPath = r'C:\Users\mart3565\Downloads\Dakota'
-
+outputDir = os.path.join(drivePath,'Dakota County\exported_fgdc')
 translator = "C:\\Program Files\\ArcGIS\\Desktop10.2\\Metadata\\Translator\\ARCGIS2FGDC.xml"
 
-for root, dirs, files in os.walk(importPath):
-    for d in dirs:
-        if d.endswith('.gdb'):
-            print 'Working on -', d
-            env.workspace = os.path.join(root, d)
-            fcList = arcpy.ListFeatureClasses()
-            outDirectory = os.path.join(root,'shapefiles')
-            print outDirectory
-            if not os.path.isdir(outDirectory):
-                os.mkdir(outDirectory)
-                print 'Created -', outDirectory
-            #for feature in fcList:
-            arcpy.FeatureClassToShapefile_conversion(fcList, outDirectory)
+if not os.path.isdir(outputDir):
+    os.mkdir(outputDir)
+    print 'Created -', outputDir
 
-#export_xml(importPath)
+export_xml(importPath)
