@@ -77,12 +77,17 @@ def export_SHP_from_GDB(input_path):
 
 
 drivePath = find_Drive.main()
-importPath = r'C:\Users\mart3565\Downloads\Dakota'
-outputDir = os.path.join(drivePath,'Dakota County\exported_fgdc')
+
+todo = [r'C:\Users\mart3565\Downloads\Dakota\Apple Valley\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Burnsville\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Eagan\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Farmington\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Hastings\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Inver Grove Heights\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\Lakeville\shapefiles',r'C:\Users\mart3565\Downloads\Dakota\Mendota, Mendota Heights & Lilydale\shapefiles',r'C:\Users\mart3565\Downloads\Dakota\Rosemount\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\South St. Paul\shapefiles', r'C:\Users\mart3565\Downloads\Dakota\West St. Paul\shapefiles']
+#importPath = r'C:\Users\mart3565\Downloads\Dakota'
+outputDir = os.path.join(drivePath,'metadata\sources\dakota-county\exported_fgdc')
 translator = "C:\\Program Files\\ArcGIS\\Desktop10.2\\Metadata\\Translator\\ARCGIS2FGDC.xml"
 
 if not os.path.isdir(outputDir):
     os.mkdir(outputDir)
     print 'Created -', outputDir
 
-export_xml(importPath)
+for x in todo:
+    importPath = x
+    #print importPath
+    export_xml(importPath)
