@@ -2,7 +2,7 @@
 
 Date Created: 9/26/2014
 Author: Chris Martin
-Purpose: Cleans up <title> xml tags by printing current value and asking for user input of new value, if any.
+Purpose: Cleans up <pubdate> xml tags by adding current year (2014) to pubdate if the field is empty.
         
 """
 
