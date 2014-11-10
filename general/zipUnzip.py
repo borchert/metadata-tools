@@ -27,6 +27,8 @@ def unzipDir(inputDir):
                     z.extractall(outDir)
                 print f,'was successful.'
 
+    print 'Done.'
+
 def zipDir(inputDir):
     zipFileName = os.path.join(inputDir,'zipfile.zip')
     print zipFileName
@@ -38,10 +40,11 @@ def zipDir(inputDir):
                 zip.write(fileName, arcname=f)
     print 'ZIP CREATED'
     zip.close()
+    print 'Done.'
 
 
-inputDir = r'C:\Users\mart3565\Desktop\test'
+inputDir = r'C:\Users\mart3565\Downloads\hennepin11102014'
 #inputDir = args.input_path
 
-#unzipDir(inputDir)
-zipDir(inputDir)
+unzipDir(inputDir)
+#zipDir(inputDir)
