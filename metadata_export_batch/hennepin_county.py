@@ -45,12 +45,15 @@ def import_XML():
     print 'Total time elapsed: ',timeFormat
 
 def export_xml(input_path):
+    outDir = os.path.join(input_path, 'export_fgdc')
+    if not os.path.exists(outDir):
+        os.makedirs(outDir)
 
     for root, dirs, files in os.walk(input_path):
         for f in files:
             if f.endswith('shp'):
                 inFile = os.path.join(root, f)
-                outFile = os.path.join(root,'exported_fgdc',(f[:-4]+'.xml'))
+                outFile = os.path.join(outDir,(f[:-4]+'.xml'))
                 ws = os.path.join(root)
                 if os.path.isfile(outFile):
                     print 'Removing', outFile
@@ -61,7 +64,7 @@ def export_xml(input_path):
 
 drivePath = find_Drive.main()
 
-importPath = r'D:\drive\Map Library Projects\Hennepin County'
+importPath = r'C:\Users\mart3565\Downloads\hennepin11102014'
 
 translator = "C:\\Program Files\\ArcGIS\\Desktop10.2\\Metadata\\Translator\\ARCGIS2FGDC.xml"
 
