@@ -9,6 +9,7 @@
 
 # Convert e00 files to coverage and each file within the coverage to shapefile.
 
+print "Importing arcpy"
 import arcpy
 from arcpy import env
 import find_Drive
