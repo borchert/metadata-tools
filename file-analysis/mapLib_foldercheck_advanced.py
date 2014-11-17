@@ -1,10 +1,26 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# mapLib_foldercheck_advanced.py
+# Created on: 2014-06-27
+# Description: Returns contents of directories as several text files.
+# ---------------------------------------------------------------------------
+
+# This script reports on he content of a directory in the form of four text files:
+
+# 1) file_desc.txt
+#    - file statistics (size, extension, etc.)
+# 2) fileStruct.txt
+#    - file structure as a tree (output or print)
+# 3) foldStruct.txt
+#    - folder structure as a tree (output or print)
+# 4) metadata_log.txt
+#    - potential metadata files (output or print)
+
 from __future__ import division
 import os
 import timeit
-
-#folder hierarchy
-#path = 'C:\Users\libpub\Desktop\SForkCrowFinal'
-#path=os.getcwd()
 
 def fold(path, output=None):
     writePath = str(path)+'\\foldStruct.txt'
@@ -13,7 +29,6 @@ def fold(path, output=None):
         level = root.replace(path, '').count(os.sep)
         indent = ' ' * 4 * (level)
         if output == 'y':
-
             file.write('{}{}/'.format(indent, os.path.basename(root)) + '\n')
         else:
             print('{}{}/'.format(indent, os.path.basename(root)))
@@ -215,7 +230,6 @@ def countFilesasDict(path, output=None):
     failedTypesCount=0
     fileCount = 0
     
-
     for root, dirs, files in os.walk(path):
         for name in files:
 
@@ -345,26 +359,3 @@ for root, dirs ,files in os.walk(startDir):
             path = os.path.join(root,x)
             print path
             del_files(path)
-            """tic = timeit.default_timer()
-
-            print "------------------"
-            print 'Current working directory = ' + str((os.getcwd()))
-
-            print "------------------"
-            countFilesasDict(path, 'y')
-            print 'File descriptions created.'
-            fileTypes = countFilesasDict(path)
-
-            fold(path, 'y')
-            print 'Folder structure created.'
-            foldFiles(path, 'y')
-            print 'File structure created.'
-            metadataQuery(path, fileTypes, 'y')
-            print 'Metadata log created.'
-
-            print "------------------"
-
-            print "COMPLETE IN: "
-            toc = timeit.default_timer()
-            timeelapsed = "{0:.2f}".format(toc-tic)
-            print str(timeelapsed) + ' seconds'"""
