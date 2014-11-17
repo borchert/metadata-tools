@@ -1,3 +1,28 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# createRecordXML.py
+# Created on: 2014-09-05
+# Description: Creates record level XML/metadata
+# ---------------------------------------------------------------------------
+
+# This script is very MGS specific.  It takes a list of html links (one per
+# record) and will create an XML template for each record.  It finds three
+# potential attribute values using different methods:
+
+# 1) BeautifulSoup to scrape the UDC
+# 2) Opening the largest found XML in the record directory
+#    - XML was created with xml_template_etree.py that tried to parse docs,
+#      pdf, etc.
+# 3) Manually enter values
+
+# The script walks the user through ~10 attributes and allows the user to select
+# the best option.  A summary is provided at the end.  An XML is created in
+# ...(record)\final_XMLs\\template.xml and it can be used to batch import for
+# all shapefiles found in a directory using metadata_batch...templatecreation.py
+
+import find_Drive
 import urllib2
 import os.path
 import operator
@@ -6,16 +31,6 @@ import xml.etree.ElementTree as ET
 import arcpy
 import time
 import glob
-
-def getDrivePath():
-    while True:
-        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
-                              "Drive):  ")
-        if not os.path.exists(drivePath):
-            print 'That path does not work.  Please try again.'
-        else:
-            break
-    return drivePath
 
 def import_XML():
 
@@ -117,28 +132,23 @@ def keeper_attr(type):
 
     return keeper
 
-userName = os.environ.get('USERNAME')
-
-if os.path.exists(r'D:\drive\\'):
-    drivePath = r'D:\drive\Map Library Projects\MGS'
-elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
-else:
-    drivePath = getDrivePath()
+drivePath = find_Drive.main()
 
 inputTemplatePath = os.path.join(drivePath,'template.xml')
+completeXML = r'c:/users/chris/desktop/completeXML.txt'
+incompleteXML = r'c:/users/chris/desktop/incompleteXML.txt'
 
-links = r'c:/users/chris/desktop/links.csv'
+# Path to links.csv with list of records to be run
+links = r'path to links csv'
 
 f = open(links)
 
 content = f.readlines()
 contentStripped = []
 for x in content:
-    contentStripped.append(x[:-1])
 
-completeXML = r'c:/users/chris/desktop/completeXML.txt'
-incompleteXML = r'c:/users/chris/desktop/incompleteXML.txt'
+    # remove last character
+    contentStripped.append(x[:-1])
 
 for item in contentStripped:
     link = item
@@ -183,7 +193,7 @@ for item in contentStripped:
     convertedPath = os.path.join(fullPath,'converted')
 
     #create final_XMLs dir if it doesn't already exist
-    if os.path.exists(os.path.join(fullPath ,"final_XMLs")) == False:
+    if !os.path.exists(os.path.join(fullPath ,"final_XMLs")):
         arcpy.CreateFolder_management(fullPath,"final_XMLs")
 
     page = urllib2.urlopen(link).read()
@@ -221,7 +231,6 @@ for item in contentStripped:
     webKeywords = holder.strip()
 
     # Print tree structure of files
-    #list_files(convertedPath)
 
     XMLDict = {}
     for filename in os.listdir(convertedPath):
@@ -307,8 +316,6 @@ for item in contentStripped:
             if XMLLinkage == '':
                 XMLLinkage = x.text
 
-        #print XMLsoup.prettify()
-
     except:
         print 'No XML was found.'
         XMLAbstract = ''
@@ -358,15 +365,11 @@ for item in contentStripped:
 
     title = root.find('idinfo/citation/citeinfo/title')
     date = root.find('idinfo/citation/citeinfo/pubdate')
-    #lineage = root.find('Esri/DataProperties/lineage/Process')
     keywords = root.find('idinfo/keywords/theme/themekey')
     linkage = root.find('idinfo/citation/citeinfo/onlink')
     abstract = root.find('idinfo/descript/abstract')
-
-    #htmlKeeperAbs = '&lt;DIV STYLE="text-align:Left;"&gt;&lt;DIV&gt;&lt;DIV&gt;&lt;P&gt;&lt;SPAN&gt;'+keeperAbs+';/SPAN&gt;&lt;/P&gt;&lt;/DIV&gt;&lt;/DIV&gt;&lt;/DIV&gt;'
     title.text = keeperTitle
     date.text = keeperDate
-    #lineage.text = keeperLineage
     keywords.text = keeperKeywords
     linkage.text = keeperLinkage
     abstract.text = keeperAbs
