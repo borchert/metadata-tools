@@ -1,25 +1,27 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# converte00toshp.py
+# Created on: 2014-01-08 
+# Description: Convert e00 files to shapefiles
+# ---------------------------------------------------------------------------
+
+# Convert e00 files to coverage and each file within the coverage to shapefile.
+
 import arcpy
 from arcpy import env
+import find_Drive
 import os
 
-def getDrivePath():
-    while True:
-        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
-                              "Drive):  ")
-        if not os.path.exists(drivePath):
-            print 'That path does not work.  Please try again.'
-        else:
-            break
-    return drivePath
-
-def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=None):
+def convertE00toShapefile(importE00File, drivePath, record, extraDir, option=None):
 
     if option == 0:
         pass
     elif option == 1:
-        importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
+        importE00File = validateInput("e00Name", "E00 name: ", drivePath, record, extraDir)
     else:
-        importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
+        importE00File = validateInput("e00Name", "E00 name: ", drivePath, record, extraDir)
 
     if importE00File.endswith('.e00'):
         e00Ext = importE00File
@@ -27,11 +29,11 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
         e00Ext = importE00File + '.e00'
 
     if extraDir == '':
-        envDir = os.path.join(defaultPath,record)
+        envDir = os.path.join(drivePath,record)
     else:
-        envDir = os.path.join(defaultPath,record,extraDir)
+        envDir = os.path.join(drivePath,record,extraDir)
 
-    outDirectory = os.path.join(defaultPath, record + '\converted\GISfiles', importE00File)
+    outDirectory = os.path.join(drivePath, record + '\converted\GISfiles', importE00File)
 
     outName = str(e00Ext[:-4])
 
@@ -53,7 +55,7 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
     # Execute ImportFromE00
     arcpy.ImportFromE00_conversion(e00Ext, outDirectory, outName)
 
-    envDir = os.path.join(defaultPath,record + '\converted\GISfiles', e00Ext[:-4], outName)
+    envDir = os.path.join(drivePath,record + '\converted\GISfiles', e00Ext[:-4], outName)
     env.workspace = envDir
     fc = arcpy.ListFeatureClasses()
 
@@ -107,19 +109,17 @@ def convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=N
     print 'Complete\n-------------------------\n'
 
 
-def validateInput(type, msg, defaultPath, record = None, extraDir = None):
-    print 'Record Number:',str(record)
-    print 'Extra Dir:',str(extraDir)
+def validateInput(type, msg, drivePath, record = None, extraDir = None):
     val = raw_input(msg)
     if type == 'record':
-        valDir = os.path.join(defaultPath,val)
+        valDir = os.path.join(drivePath,val)
         error = 'That record number doesn\'t exist.  Please try again.\n'
     if type == 'extraDir':
-        valDir = os.path.join(defaultPath,record,val)
+        valDir = os.path.join(drivePath,record,val)
         error = 'That extra directory doesn\'t exist. Please try again.\n'
     if type == 'e00Name':
         val += '.e00'
-        valDir = os.path.join(defaultPath,record,extraDir, val)
+        valDir = os.path.join(drivePath,record,extraDir, val)
         error = 'That e00 file doesn\'t exist. Please try again.\n'
 
     while True:
@@ -128,14 +128,14 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
                 print error
                 val = raw_input(msg)
                 if type == 'record':
-                    valDir = os.path.join(defaultPath,val)
+                    valDir = os.path.join(drivePath,val)
 
                 if type == 'extraDir':
-                    valDir = os.path.join(defaultPath,record,val)
+                    valDir = os.path.join(drivePath,record,val)
 
                 if type == 'e00Name':
                     val += '.e00'
-                    valDir = os.path.join(defaultPath,record,extraDir,val)
+                    valDir = os.path.join(drivePath,record,extraDir,val)
 
             else:
                 break
@@ -146,21 +146,15 @@ def validateInput(type, msg, defaultPath, record = None, extraDir = None):
     else:
         return val
 
-# Set local variables
-userName = os.environ.get('USERNAME')
+# Find users Google Drive path
+drivePath = find_Drive.main()
 
-if os.path.exists(r'D:\drive\\'):
-    defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
-elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-    defaultPath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS\Records\\')
-else:
-    getDrivePath()
+print "Enter a record number to get started: "
+record = validateInput("record","Record Number: ", drivePath)
+extraDir = validateInput("extraDir", "Extra directory: ", drivePath, record)
+importE00File = validateInput("e00Name", "E00 name: ", drivePath, record, extraDir)
 
-record = validateInput("record","Record Number: ", defaultPath)
-extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
-importE00File = validateInput("e00Name", "E00 name: ", defaultPath, record, extraDir)
-
-convertE00toShapefile(importE00File, defaultPath, record, extraDir, option=0)
+convertE00toShapefile(importE00File, drivePath, record, extraDir, option=0)
 
 while True:
 
@@ -170,9 +164,9 @@ while True:
     if exitScript in ('x', 'X'):
         break
     elif exitScript in ('n', 'N'):
-        record = validateInput("record","Record Number: ", defaultPath)
-        extraDir = validateInput("extraDir", "Extra directory: ", defaultPath, record)
-        convertE00toShapefile(importE00File, defaultPath, record, extraDir)
+        record = validateInput("record","Record Number: ", drivePath)
+        extraDir = validateInput("extraDir", "Extra directory: ", drivePath, record)
+        convertE00toShapefile(importE00File, drivePath, record, extraDir)
     else:
-        convertE00toShapefile(importE00File, defaultPath, record, extraDir, option = 1)
+        convertE00toShapefile(importE00File, drivePath, record, extraDir, option = 1)
 
