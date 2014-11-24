@@ -1,3 +1,18 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# find_Drive.py
+# Created on: 2014-09-08
+# Description: Unzips or zips a directory
+# ---------------------------------------------------------------------------
+
+# This script is zips/unzips a directory.
+
+# Currently set up to unzip (unzipDir(inputDir).
+# Comment out unzipDir(inputDir) and uncomment zipDir(inputDir) to zip a
+# directory.
+
 import os
 import zipfile
 
@@ -7,8 +22,6 @@ try:
     mode= zipfile.ZIP_DEFLATED
 except:
     mode= zipfile.ZIP_STORED
-
-
 
 def unzipDir(inputDir):
     for root, dirs, files in os.walk(inputDir):
@@ -44,7 +57,6 @@ def zipDir(inputDir):
 
 
 inputDir = r'C:\Users\mart3565\Downloads\hennepin11102014'
-#inputDir = args.input_path
 
 unzipDir(inputDir)
 #zipDir(inputDir)

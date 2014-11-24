@@ -1,11 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# find_Drive.py
+# Created on: 2014-09-08
+# Description: Unzips a directory
+# ---------------------------------------------------------------------------
+
+# This script is discontinued but unzips a directory.
+
 import os
 import zipfile
-import argparse
-
-#parser = argparse.ArgumentParser()
-#parser.add_argument(name="input_path",help="path to start looking in")
-
-#args = parser.parse_args()
+# import argparse
 
 def unzipDir(inputDir):
     for root, dirs, files in os.walk(inputDir):
