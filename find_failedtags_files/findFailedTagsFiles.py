@@ -1,24 +1,27 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# findFailedTagsFiles.py
+# Created on: 2014-11-24
+# Description: Finds failed (empty) tags in XML.
+# ---------------------------------------------------------------------------
+
+# This script looks for several commonly missing XML tags (particular to the
+# MGS dataset) and reports each missing tag type to a distinct *.txt file.
+# It can be easily modified to search for any required tags.  It will also
+# open all files missing ALL tags in batches of 5, using subprocess and
+# Notepad++.  Notepad++ must be present and the path may need to be altered.
+
+import find_Drive
 import os
 import subprocess
 
-def getDrivePath():
-    while True:
-        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
-                              "Drive):  ")
-        if not os.path.exists(drivePath):
-            print 'That path does not work.  Please try again.'
-        else:
-            break
-    return drivePath
 
 userName = os.environ.get('USERNAME')
 
-if os.path.exists(r'D:\drive\\'):
-    drivePath = r'D:\drive\Map Library Projects\MGS'
-elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
-else:
-    drivePath = getDrivePath()
+drivePath = find_Drive.main()
+notepadPath = r'C:\Program Files (x86)\Notepad++\notepad++.exe'
 
 startDir = drivePath + '\\Records'
 failedLineage = drivePath + '\\failedLineage.txt'
@@ -156,7 +159,7 @@ for x in failedAllList:
     builtPath = path + f
 
     if count < 5:
-        subprocess.Popen([r'C:\Program Files (x86)\Notepad++\notepad++.exe', builtPath])
+        subprocess.Popen([notepadPath, builtPath])
         count+=1
     else:
         raw_input()
