@@ -1,15 +1,21 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# find_bb_and_fields.py
+# Created on: 2014-08-01
+# Description: Determine bounding box and attribute fields for shapefiles.
+# ---------------------------------------------------------------------------
+
+# This script offers batch or single file processing of shapefile(s).  Each
+# shapefile is processed to determine bounding box and all attribute fields
+# contained within.  The bounding box is created by creating a geometry around
+# all features (envelope), converting vertices to points and calculating the
+# X/Y of the point.  The max/min X/Y of these points is used for the bounding box. 
+
+import find_Drive
 import arcpy
 import os
-
-def getDrivePath():
-    while True:
-        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
-                              "Drive):  ")
-        if not os.path.exists(drivePath):
-            print 'That path does not work.  Please try again.'
-        else:
-            break
-    return drivePath
 
 def processShapefile(shapeName, defaultPath, record, extraDir, option = None):
 
@@ -131,13 +137,7 @@ print 'Importing ArcPy takes forever, I know.'
 userName = os.environ.get('USERNAME')
 
 # Find location of Drive path
-
-if os.path.exists(r'D:\drive\\'):
-    defaultPath = r'D:\drive\Map Library Projects\MGS\Records\\'
-elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-    defaultPath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS\Records\\')
-else:
-    getDrivePath()
+drivePath = find_Drive.main()
 
 method = raw_input('Please enter B for batch processing or S for single processing:  ')
 
