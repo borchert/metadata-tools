@@ -1,25 +1,24 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# findFailedTagsFiles.py
+# Created on: 2014-08-15
+# Description: Opens failed tags with subprocess/Notepad++.
+# ---------------------------------------------------------------------------
+
+# This script open all files missing ALL tags in batches of 5, using subprocess
+# and Notepad++.  Notepad++ must be present and the path may need to be altered.
+# This is a subset of findFailedTagsFiles.py.
+
+import find_Drive
 import subprocess
 import os
 
-def getDrivePath():
-    while True:
-        drivePath = raw_input("Please enter the path to your Drive folder (i.e. D:\drive or C:\Users\username\Google "
-                              "Drive):  ")
-        if not os.path.exists(drivePath):
-            print 'That path does not work.  Please try again.'
-        else:
-            break
-    return drivePath
-
 userName = os.environ.get('USERNAME')
 
-if os.path.exists(r'D:\drive\\'):
-    drivePath = r'D:\drive\Map Library Projects\MGS'
-elif os.path.exists(os.path.join(r'C:\Users\\',userName,'Google Drive')):
-    drivePath = os.path.join(r'C:\Users\\',userName,'Google Drive\Map Library Projects\MGS')
-else:
-    drivePath = getDrivePath()
-
+drivePath = find_Drive.main()
+notepadPath = r'C:\Program Files (x86)\Notepad++\notepad++.exe'
 
 failedTags = drivePath + r'\Documentation\failedtagscleanup.txt'
 
@@ -52,14 +51,14 @@ for x in filesToOpen:
     xmlPath = x + '.xml'
     if count < 5:
         print 'Opening:', builtPath
-        subprocess.Popen([r'C:\Program Files (x86)\Notepad++\notepad++.exe', builtPath])
-        subprocess.Popen([r'C:\Program Files (x86)\Notepad++\notepad++.exe', xmlPath])
+        subprocess.Popen([notepadPath, builtPath])
+        subprocess.Popen([notepadPath, xmlPath])
         count+=1
 
     else:
         print 'Opening:', builtPath
-        subprocess.Popen([r'C:\Program Files (x86)\Notepad++\notepad++.exe', builtPath])
-        subprocess.Popen([r'C:\Program Files (x86)\Notepad++\notepad++.exe', xmlPath])
+        subprocess.Popen([notepadPath, builtPath])
+        subprocess.Popen([notepadPath, xmlPath])
         count=0
         raw_input()
     total +=1
