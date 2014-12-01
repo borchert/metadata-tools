@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ---------------------------------------------------------------------------
+# log_Check.py
+# Created on: 2014-06-13
+# Description: Checks log creation status
+# ---------------------------------------------------------------------------
+
+# This script checks for the presence of various log files.
+
 from __future__ import division
 import os
 import timeit
