@@ -1,0 +1,33 @@
+{
+ "name": "metadata",
+ "children": [
+  {
+   "name": "idinfo",
+   "children": [
+    {
+     "name": "citation",
+     "children": [
+	 {
+	  "name": "citeinfo",
+	  "children": [
+	  {
+	   {"name": "title", "size": 3938},
+       {"name": "geoform", "size": 3812},
+       {"name": "onlink", "size": 6714},
+       {"name": "pubdate", "size": 743}
+	   {"name": "origin", "size": 3938},
+       {
+	    "name": "pubinfo",
+	    "children": [
+		  {"name": "publish", "size":3938}
+		  ]
+		},
+	   },
+	  ]
+	 },
+	 ]
+	},
+	]
+  },
+  ]
+}

@@ -1,0 +1,516 @@
+{  
+  "name":"gmd:MD_Metadata",
+  "easyname": "metadata",
+  "children":[  
+    {"name":"gmd:fileIndentifier", "easyname": "", "size":743},
+	{"name":"gmd:language", "easyname": "", "size":743},
+	{"name":"gmd:parentIdentifier", "easyname": "", "size":743},
+	{"name":"gmd:hierarchyLevel", "easyname": "", "size":743},
+	{"name":"gmd:hierarchyLevelName", "easyname": "", "size":743},
+	{
+	 "name":"gmd:contact", 
+	 "easyname": "", 
+	 "children":[
+	   {
+	    "name":"gmd:CI_ResponsibleParty", 
+		"easyname": "", 
+		"children": [
+			{"name":"gmd:organisationName", "easyname": "", "size":743},
+			{
+			 "name":"gmd:contactInfo", 
+			 "easyname": "", 
+			 "children": [
+				{
+				 "name":"gmd:CI_Contact", 
+				 "easyname": "", 
+				 "children": [
+					{
+					 "name":"gmd:address", 
+					 "easyname": "", 
+					 "children": [
+						{
+						 "name":"gmd:CI_Address", 
+						 "easyname": "", 
+						 "children": [
+							{"name":"gmd:deliveryPoint", "easyname": "", "size":743},
+							{"name":"gmd:city", "easyname": "", "size":743},
+							{"name":"gmd:administrativeArea", "easyname": "", "size":743},
+							{"name":"gmd:postalCode", "easyname": "", "size":743},
+							{"name":"gmd:country", "easyname": "", "size":743},
+							{"name":"gmd:electronicMailAddress", "easyname": "", "size":743}
+						 ]
+						 }
+					 ]
+					 }
+				 ]
+				 }
+			 ]
+			 },
+			{
+			 "name":"gmd:role", 
+			 "easyname": "", 
+			 "children": [
+				{"name":"gmd:CI_RoleCode", "easyname": "", "size":743}
+			 ]
+			 }
+		]
+		}
+	 
+	 ]
+	 },
+	 
+	 {"name":"gmd:dateStamp", "easyname": "", "size":743},
+	 {"name":"gmd:metadataStandardName", "easyname": "", "size":743},
+	 {"name":"gmd:metadataStandardVersion", "easyname": "", "size":743},
+	 {
+	  "name":"gmd:referenceSystemInfo", 
+	  "easyname": "", 
+	  "children": [
+		{
+		 "name":"gmd:MD_ReferenceSystem", 
+		 "easyname": "", 
+		 "children": [
+			{
+			 "name":"gmd:referenceSystemIdentifier", 
+			 "easyname": "", 
+			 "children": [
+				{
+				 "name":"gmd:RS_Identifier", 
+				 "easyname": "", 
+				 "children": [
+					{"name":"gmd:code", "easyname": "", "size":743},
+					{"name":"gmd:codeSpace", "easyname": "", "size":743},
+					{"name":"gmd:version", "easyname": "", "size":743}
+				 
+				 ]
+				 }
+			 ]
+			 }
+		 
+		 ]
+		 }
+	  
+	  ]
+	  },
+	  
+	  {
+	    "name":"gmd:identificationInfo", 
+		"easyname": "", 
+		"children": [
+			{
+			  "name":"gmd:MD_DataIdentification", 
+			  "easyname": "", 
+			  "children": [
+				{
+				  "name":"gmd:citation", 
+				  "easyname": "", 
+				  "children": [
+					{
+					  "name":"gmd:CI_Citation", 
+					  "easyname": "", 
+					  "children": [
+						{"name":"gmd:title", "easyname": "", "size":743},
+						{"name":"gmd:alternateTitle", "easyname": "", "size":743},
+						{
+						  "name":"gmd:date", 
+						  "easyname": "", 
+						  "children": [
+							{
+							  "name":"gmd:CI_Date", 
+							  "easyname": "", 
+							  "children": [
+								{"name":"gmd:date", "easyname": "", "size":743},
+								{"name":"gmd:dateType", "easyname": "", "size":743}
+							  ]
+							  }
+						  ]
+						  },
+						  {
+						    "name":"gmd:identifier", 
+							"easyname": "", 
+							"children": [
+								{
+								  "name":"gmd:RS_Identifier", 
+								  "easyname": "", 
+								  "children": [
+									{"name":"gmd:code", "easyname": "", "size":743},
+									{"name":"gmd:codeSpace", "easyname": "", "size":743},
+									{"name":"gmd:version", "easyname": "", "size":743}
+								  ]
+								  }
+							]
+							},
+							{"name":"gmd:otherCitationDetails", "easyname": "", "size":743}
+					  ]
+					  }
+				  ]
+				  },
+				  
+				  {"name":"gmd:abstract", "easyname": "", "size":743},
+				  {"name":"gmd:status", "easyname": "", "size":743},
+				  {
+				    "name":"gmd:pointOfContact", 
+					"easyname": "", 
+					"children": [
+						{
+						  "name":"gmd:CI_ResponsibleParty", 
+						  "easyname": "", 
+						  "children": [
+							{"name":"gmd:individualName", "easyname": "", "size":743},
+							{"name":"gmd:organisationName", "easyname": "", "size":743},
+							{
+							  "name":"gmd:contactInfo", 
+							  "easyname": "", 
+							  "children": [
+								{
+								  "name":"gmd:CI_Contact", 
+								  "easyname": "", 
+								  "children": [
+									{
+									  "name":"gmd:address", 
+									  "easyname": "", 
+									  "children": [
+										{
+										  "name":"gmd:CI_Address", 
+										  "easyname": "", 
+										  "children": [
+											{"name":"gmd:deliveryPoint", "easyname": "", "size":743},
+											{"name":"gmd:city", "easyname": "", "size":743},
+											{"name":"gmd:administrativeArea", "easyname": "", "size":743},
+											{"name":"gmd:postalCode", "easyname": "", "size":743},
+											{"name":"gmd:country", "easyname": "", "size":743},
+											{"name":"gmd:electronicMailAddress", "easyname": "", "size":743}
+										  ]
+										  }
+									  ]
+									  }
+								  ]
+								  }
+							  ]
+							  },
+							{
+							  "name":"gmd:role", 
+							  "easyname": "", 
+							  "children": [
+								{"name":"gmd:CI_RoleCode", "easyname": "", "size":743}
+							  ]
+							  }
+						  ]
+						  }
+					]
+					},
+					{
+					  "name":"gmd:pointOfContact", 
+					  "easyname": "", 
+					  "children": [
+						{
+						  "name":"gmd:CI_ResponsibleParty", 
+						  "easyname": "", 
+						  "children": [
+							{"name":"gmd:organisationName", "easyname": "", "size":743},
+							{
+							  "name":"gmd:contactInfo", 
+							  "easyname": "", 
+							  "children": [
+								{
+								  "name":"gmd:CI_Contact", 
+								  "easyname": "", 
+								  "children": [
+									{
+									  "name":"gmd:address", 
+									  "easyname": "", 
+									  "children": [
+										{
+										  "name":"gmd:CI_Address", 
+										  "easyname": "", 
+										  "children":[
+											{"name":"gmd:electronicMailAddress", "easyname": "", "size":743}
+										  ]
+										  }
+									  ]
+									  }
+									  
+									]
+									}
+								  ]
+								  },
+								  {
+								    "name":"gmd:role", 
+									"easyname": "", 
+									"children": [
+										{"name":"gmd:CI_RoleCode", "easyname": "", "size":743}
+									]
+									}
+								]
+								}
+							  ]
+							  },
+							  {
+							    "name":"gmd:resourceMaintenance", 
+								"easyname": "", 
+								"children": [
+									{
+									  "name":"gmd:MD_MaintenanceInformation", 
+									  "easyname": "", 
+									  "children": [
+										{"name":"gmd:maintenanceAndUpdateFrequency", "easyname": "", "size":743},
+										{"name":"gmd:maintenanceNote", "easyname": "", "size":743}
+									  ]
+									  }
+								]
+								},
+								{
+								  "name":"gmd:graphicOverview", 
+								  "easyname": "", 
+								  "children": [
+									{
+									  "name":"gmd:MD_BrowseGraphic", 
+									  "easyname": "", 
+									  "children": [
+										{"name":"gmd:fileName", "easyname": "", "size":743},
+										{"name":"gmd:fileDescription", "easyname": "", "size":743}
+									  ]
+									  }
+								  ]
+								  },
+								  {
+								    "name":"gmd:descriptiveKeywords", 
+									"easyname": "", 
+									"children": [
+										{
+										  "name":"gmd:MD_Keywords", 
+										  "easyname": "", 
+										  "children": [
+											{"name":"gmd:keyword", "easyname": "", "size":743},
+											{"name":"gmd:type", "easyname": "", "size":743},
+											{
+											  "name":"gmd:thesaurusName", 
+											  "easyname": "", 
+											  "children": [
+												{
+												  "name":"gmd:CI_Citation", 
+												  "easyname": "", 
+												  "children": [
+													{"name":"gmd:title", "easyname": "", "size":743},
+													{
+													  "name":"gmd:date", 
+													  "easyname": "", 
+													  "children": [
+														{
+														  "name":"gmd:CI_Date", 
+														  "easyname": "", 
+														  "children": [
+															{"name":"gmd:date", "easyname": "", "size":743},
+															{"name":"gmd:dateType", "easyname": "", "size":743}
+														  ]
+														  }
+													  ]
+													  }
+												  ]
+												  }
+											  ]
+											  }
+										  ]
+										  }
+									]
+									},
+									{
+									  "name":"gmd:resourceConstraints", 
+									  "easyname": "", 
+									  "children": [
+										{
+										"name":"gmd:MD_LegalConstraints", 
+										"easyname": "", 
+										"children": [
+											{"name":"gmd:useLimitation", "easyname": "", "size":743},
+											{"name":"gmd:accessConstraints", "easyname": "", "size":743},
+											{"name":"gmd:otherConstraints", "easyname": "", "size":743}
+										]
+										}
+									  ]
+									  },
+									  {"name":"gmd:spatialRepresentationType", "easyname": "", "size":743},
+									  {
+									    "name":"gmd:spatialResolution", 
+										"easyname": "", 
+										"children": [
+											{
+											  "name":"gmd:MD_Resolution", 
+											  "easyname": "", 
+											  "children": [
+												{"name":"gmd:distance", "easyname": "", "size":743}
+											  ]
+											  }
+										]
+										},
+										{"name":"gmd:language", "easyname": "", "size":743},
+										{"name":"gmd:topicCategory", "easyname": "", "size":743},
+										{
+										  "name":"gmd:extent", 
+										  "easyname": "", 
+										  "children": [
+											{
+											  "name":"gmd:EX_Extent", 
+											  "easyname": "", 
+											  "children": [
+												{
+												  "name":"gmd:geographicElement", 
+												  "easyname": "", 
+												  "children": [
+													{
+													  "name":"gmd:EX_GeographicDescription", 
+													  "easyname": "", 
+													  "children": [
+														{
+														  "name":"gmd:geographicIdentifier", 
+														  "easyname": "", 
+														  "children": [
+															{
+															  "name":"gmd:RS_Identifier", 
+															  "easyname": "", 
+															  "children": [
+																{"name":"gmd:code", "easyname": "", "size":743},
+																{"name":"gmd:codeSpace", "easyname": "", "size":743},
+																{"name":"gmd:version", "easyname": "", "size":743}
+															  ]
+															  }
+														  ]
+														  }
+													  ]
+													  }
+												  ]
+												  }
+											  ]
+											  }
+										  ]
+										  },
+										  {
+										  "name":"gmd:extent", 
+										  "easyname": "", 
+										  "children": [
+											{
+											  "name":"gmd:EX_Extent", 
+											  "easyname": "", 
+											  "children": [
+												{
+												  "name":"gmd:temporalElement", 
+												  "easyname": "", 
+												  "children": [
+													{
+													  "name":"gmd:EX_TemporalExtent", 
+													  "easyname": "", 
+													  "children": [
+														{
+														  "name":"gmd:extent", 
+														  "easyname": "", 
+														  "children": [
+															{
+															  "name":"gml:TimePeriod", 
+															  "easyname": "", 
+															  "children": [
+																{"name":"gml:beginPosition", "easyname": "", "size":743},
+																{"name":"gml:endPosition", "easyname": "", "size":743}
+															  ]
+															  }
+														  ]
+														  }
+													  ]
+													  }
+												  ]
+												  }
+											  ]
+											  }
+											  
+											]
+											},
+											
+											{
+										      "name":"gmd:extent", 
+										      "easyname": "", 
+										      "children": [
+											    {
+											      "name":"gmd:EX_Extent", 
+											      "easyname": "", 
+											      "children": [
+													{
+													  "name":"gmd:geographicElement", 
+													  "easyname": "", 
+													  "children": [
+														{
+														  "name":"gmd:EX_GeographicBoundingBox", 
+														  "easyname": "", 
+														  "children": [
+															{"name":"gmd:extentTypeCode", "easyname": "", "size":743},
+															{"name":"gmd:westBoundLongitude", "easyname": "", "size":743},
+															{"name":"gmd:eastBoundLongitude", "easyname": "", "size":743},
+															{"name":"gmd:southBoundLatitude", "easyname": "", "size":743},
+															{"name":"gmd:northBoundLatitude", "easyname": "", "size":743}
+														  ]
+														  }
+													  ]
+													  }
+												  ]
+												  }
+												]
+												},
+												{"name":"gmd:supplementalInformation", "easyname": "", "size":743}
+										  
+										  
+
+									
+			  ]
+			  }
+		]
+		},
+		{
+		  "name":"gmd:distributionInfo", 
+		  "easyname": "", 
+		  "children": [
+			{
+			  "name":"gmd:MD_Distribution", 
+			  "easyname": "", 
+			  "children": [
+				{
+				  "name":"gmd:distributionFormat", 
+				  "easyname": "", 
+				  "children": [
+					{
+					"name":"gmd:MD_Format", 
+					"easyname": "", 
+					"children": [
+						{"name":"gmd:name", "easyname": "", "size":743},
+						{"name":"gmd:version", "easyname": "", "size":743}
+					]
+					}
+				  ]
+				  },
+				  {
+				    "name":"gmd:distributor", 
+					"easyname": "", 
+					"children": [
+						{
+						  "name":"gmd:MD_Distributor", 
+						  "easyname": "", 
+						  "children": [
+							{
+							  "name":"gmd:distibutorContact", 
+							  "easyname": "", 
+							  "children": [
+								{"name":"gmd:CI_ResponsibleParty", "easyname": "", "size":743}
+							  ]
+							  }
+						  ]
+						  }
+					]
+					}
+			  ]
+			  }
+		  ]
+		  }
+	
+	
+  ]
+  
+  
+
+}
