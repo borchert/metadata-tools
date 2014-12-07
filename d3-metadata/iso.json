@@ -13,7 +13,7 @@
 	 "children":[
 	   {
 	    "name":"gmd:CI_ResponsibleParty", 
-		"easyname": "", 
+		"easyname": "test", 
 		"children": [
 			{"name":"gmd:organisationName", "easyname": "", "size":743},
 			{

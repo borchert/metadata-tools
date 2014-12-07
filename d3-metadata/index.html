@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
     <link type="text/css" rel="stylesheet" href="style.css"/>
     <script type="text/javascript" src="../libraries/d3/d3.js"></script>
+    <script type="text/javascript" src="autocomplete.js"></script>
     <!--<script type="text/javascript" src="../libraries/d3/d3.layout.js"></script>-->
     <style type="text/css">
 
@@ -29,6 +30,8 @@ path.link {
     </style>
   </head>
   <body>
+
+    <div id="search" style="width:100%; height:100%;">SEARCH SHOULD BE HERE</div>
     <div id="body">
       <div id="footer">
         d3.layout.tree
@@ -39,6 +42,33 @@ path.link {
       </div>
     </div>
     <script type="text/javascript">
+
+    //Variable to hold autocomplete options
+    var keys;
+
+    //Load US States as options from CSV - but this can also be created dynamically
+    d3.csv("states.csv",function (csv) {
+        keys=csv;
+        start();
+    });
+
+
+    //Call back for when user selects an option
+    function onSelect(d) {
+        alert(d.State);
+    }
+
+    //Setup and render the autocomplete
+    function start() {
+        var mc = autocomplete(document.getElementById('search'))
+                .keys(keys)
+                .dataField("State")
+                .placeHolder("Search States - Start typing here")
+                .width(960)
+                .height(500)
+                .onSelected(onSelect)
+                .render();
+    }
 
 var m = [20, 120, 20, 120],
     w = 1480 - m[1] - m[3],
@@ -55,13 +85,64 @@ var diagonal = d3.svg.diagonal()
 var vis = d3.select("#body").append("svg:svg")
     .attr("width", w + m[1] + m[3])
     .attr("height", h + m[0] + m[2])
-  .append("svg:g")
+    .append("svg:g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 d3.json("iso.json", function(json) {
   root = json;
+  //console.log(root);
   root.x0 = h / 2;
   root.y0 = 0;
+  //console.log(JSON.stringify(root));
+  //var parsejson = JSON.parse(root);
+  //console.log(parsejson);
+  //console.log(root["name"]);
+  /*for (var key in root) {
+    if (root.hasOwnProperty(key)) {
+      console.log(key + " -> " + root[key]);
+    }
+  }*/
+
+  //root.children.forEach(function(d) { console.log(d.name); });
+
+  /*function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else if (i == key && obj[key] == val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
+
+function getObjects2(obj, key) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key));
+        } else if (i == key) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
+  test = getObjects2(root, 'name');
+  console.log(test);
+
+  for (var i = 0; i < root.length; i++) {
+    for (var prop in root[i]) {
+        if (root[i].hasOwnProperty(prop)) {
+            var key = prop;
+            break;
+        }
+    }
+    console.log(key);
+}*/
+
 
   function toggleAll(d) {
     if (d.children) {
