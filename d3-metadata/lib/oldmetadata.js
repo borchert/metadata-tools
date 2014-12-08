@@ -1,95 +1,14 @@
-<!DOCTYPE html>
-<head>
+/* ------------------------------------
 
-    <meta HTTP-EQUIV="X-UA-COMPATIBLE" CONTENT="IE=EmulateIE9" >
-    <script type="text/javascript" src="scripts/d3.min.js"></script>
-    <script type="text/javascript" src="scripts/autocomplete.js"></script>
-    <script src="../libraries/jquery-2.1.1.min.js"></script>
-    <style type="text/css">
+Search functionality
 
+---------------------------------------*/
 
-.node circle {
-  cursor: pointer;
-  fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-.node text {
-  font-size: 10px;
-}
-
-path.link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
-}
-
-    </style>
-
-
-    <link rel="stylesheet" href="fonts/bariol/bariol.css"/>
-    <link rel="stylesheet" href="styles/style.css"/>
-    <!--<link type="text/css" rel="stylesheet" href="style.css"/>-->
-
-</head>
-
-<body>
-
-<div id="test" style="width:100%; height:100%;"></div>
-    <div id="body">
-      <div id="footer">
-        d3.layout.tree
-        <div class="hint">click or option-click to expand or collapse</div>
-        <div>
-          <button type="button" id="expandAll">Expand All</button>
-          <button type="button" id="collapseAll">Collapse All</button>
-        </div>
-      </div>
-    </div>
-
-
-<script language="JavaScript">
-
-$("#expandAll").on('click', function(){
-    console.log('Clicked expand all');
-    function toggleAll(d) {
-        if (d.children) {
-            d.children.forEach(toggleAll);
-            toggle(d);
-        }
-    }
-    //console.log(root);
-    toggle(root);
-    //console.log(root.children);
-    update(root);
-    toggle(root.children);
-
-    //root.children.forEach(toggleAll); 
-    update(root);
-});
-
-
-$("#collapseAll").on('click', function(){
-
-    /*function moveChildren(node) {
-    if(node.children) {
-        node.children.forEach(function(c) { moveChildren(c); });
-        node._children = node.children;
-        node.children = null;
-    }
-}
-moveChildren(root);*/
-    toggle(root);
-    update(root);   
-});
-
-
-    //Variable to hold autocomplete options
+//Variable to hold autocomplete options
 var keys;
 
 //Load US States as options from CSV - but this can also be created dynamically
-d3.csv("states2.csv", function (csv) {
+d3.csv("states.csv", function (csv) {
     keys = csv;
     start();
 });
@@ -98,16 +17,11 @@ d3.csv("states2.csv", function (csv) {
 //Call back for when user selects an option
 function onSelect(d) {
     alert(d.State);
-    /*var node = d3.selectAll(d.State)
-      .data(nodes)
-      .enter().append("svg:circle")
-      .style("fill", function (d) { return '#1f77b4'; })*/
-    //d3.selectAll(d)
 }
 
 //Setup and render the autocomplete
 function start() {
-    var mc = autocomplete(document.getElementById('test'))
+    var mc = autocomplete(document.getElementById('search'))
         .keys(keys)
         .dataField("State")
         .placeHolder("Search States - Start typing here")
@@ -117,34 +31,11 @@ function start() {
         .render();
 }
 
-// Build name values
-nameArray = [];
-humanNameArray = []
+/* ------------------------------------
 
-function traverse(o) {
-    for (i in o) {
-        if (typeof (o[i]) == "object") {
-            if (typeof o[i]["name"] != 'undefined') {
-                if (name.indexOf(o[i]["name"]) == -1) {
-                    name = o[i]["name"];
-                    nameArray.push(name);
+D3 set up
 
-                } 
-                if (name.indexOf(o[i]["easyname"]) == -1) {
-                    name = o[i]["easyname"];
-                    humanNameArray.push(name);
-
-                } 
-
-            }
-
-            traverse(o[i]);
-        }
-    }
-}
-
-
-//D3
+---------------------------------------*/
 
 var m = [20, 120, 20, 120],
     w = 1480 - m[1] - m[3],
@@ -168,8 +59,59 @@ var vis = d3.select("#body").append("svg:svg")
 
 d3.json("iso.json", function (json) {
     root = json;
+    //console.log(root);
     root.x0 = h / 2;
-    root.y0 = 0;  
+    root.y0 = 0;
+    //console.log(JSON.stringify(root));
+    //var parsejson = JSON.parse(root);
+    //console.log(parsejson);
+    //console.log(root["name"]);
+    /*for (var key in root) {
+    if (root.hasOwnProperty(key)) {
+      console.log(key + " -> " + root[key]);
+    }
+  }*/
+
+    //root.children.forEach(function(d) { console.log(d.name); });
+
+    /*function getObjects(obj, key, val) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key, val));
+        } else if (i == key && obj[key] == val) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
+
+function getObjects2(obj, key) {
+    var objects = [];
+    for (var i in obj) {
+        if (!obj.hasOwnProperty(i)) continue;
+        if (typeof obj[i] == 'object') {
+            objects = objects.concat(getObjects(obj[i], key));
+        } else if (i == key) {
+            objects.push(obj);
+        }
+    }
+    return objects;
+}
+  test = getObjects2(root, 'name');
+  console.log(test);
+
+  for (var i = 0; i < root.length; i++) {
+    for (var prop in root[i]) {
+        if (root[i].hasOwnProperty(prop)) {
+            var key = prop;
+            break;
+        }
+    }
+    console.log(key);
+}*/
+
 
     function toggleAll(d) {
         if (d.children) {
@@ -182,16 +124,8 @@ d3.json("iso.json", function (json) {
     root.children.forEach(toggleAll);
     //toggle(root.children[0]);
     //toggle(root.children[2].children[0]);
-    update(root);   
+    update(root);
 });
-
-// Build list of nodes (name and human name)
-/*d3.json("iso.json", function (json) {
-    console.log("Called Round 2");
-    root = json;
-    traverse(root);
-
-});*/
 
 /*function separation(a, b) {
   return a.parent == b.parent ? 1 : 5;
@@ -363,8 +297,9 @@ function mouseover(d) {
 function mouseout(d) {
     d3.select(this).select("text.hover").remove();
 }
-</script>
 
-</body>
+/* ------------------------------------
 
-</html>
+Search functionality
+
+---------------------------------------*/
