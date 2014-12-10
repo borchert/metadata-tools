@@ -1,0 +1,1 @@
+characterSet – Character coding standard in the metadata.

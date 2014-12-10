@@ -1,79 +1,5 @@
 $(function() {
-	/* ------------------------------------
-
-	Expand/collapse button functionality
-
-	---------------------------------------*/
 	
-	$("#expandAll").on('click', function () {
-		console.log('Clicked expand all');
-
-		function expandAll(d) {
-		    console.log("Expanding");
-			if (d._children) {
-			console.log("Expanding children");
-				d._children.forEach(expandAll);
-				toggle(d);
-				update(root);
-			}
-		}
-		
-		// Toggle children.
-		function toggle(d) {
-		  //console.log(d.children);
-		  console.log(d._children);
-			if (d.children) {
-				console.log("!!!!");
-				d._children = d.children;
-				d.children = null;
-			} else {
-			console.log("....");
-				d.children = d._children;
-				d._children = null;
-			}
-		}
-		//console.log(root);
-		if (root.children){
-		  //close tree
-		  console.log("Closing tree");
-		  toggle(root);
-		  //console.log(root._children);
-		  update(root);
-		  console.log(root._children);
-		  root._children.forEach(expandAll);
-		  update(root);
-		  
-		  }
-		else{
-		  console.log("Hidden children");
-		  /*root._children.forEach(expandAll); 
-		  update(root);*/
-		  };
-		//toggle(root.children);
-
-		//root._children.forEach(expandAll); 
-		//update(root);
-	});
-
-
-	$("#collapseAll").on('click', function (e) {
-	
-	    if(e.ctrlKey){
-          console.log('ctrl');
-		  }
-
-		/*function moveChildren(node) {
-		if(node.children) {
-			node.children.forEach(function(c) { moveChildren(c); });
-			node._children = node.children;
-			node.children = null;
-		}
-	}
-	moveChildren(root);*/
-		toggle(root);
-		update(root);
-	});
-
 	/* ------------------------------------
 
 	Search functionality
@@ -92,17 +18,39 @@ $(function() {
 
 	//Call back for when user selects an option
 	function onSelect(d) {
+	    var node = d3.selectAll("g.node")
+	        
+	    node.selectAll("circle")
+		  
+		  .style("fill", function(d){
+		    if (d._children){
+			  return "#BB1695E"
+			  } else{
+			    return "#fff";}})
+		  .style("stroke", function(d){return "steelblue";})
 
-		var node = d3.selectAll("[id='" + d.name +"']")
-		
-		node.selectAll("circle")
-		  .style("fill", function (d) { return '#ff0000'; })
-		  .style("stroke", function (d) { return '#000'; })
-		
 		node.selectAll("text")
-		  .style("font-size", function (d) { return '20'; })
-		  .style("fill", function (d) { return '#ff0000'; })
-		 
+		  .style("font-size", function (d) { return '10'; })
+		  .style("fill", function (d) { return '#000'; })
+
+	    node = d3.selectAll("[id='" + d.name + "']")
+
+	    node.selectAll("circle")
+	        .style("fill", function (d) {
+	        return '#ff0000';
+	    })
+	        .style("stroke", function (d) {
+	        return '#000';
+	    })
+
+	    node.selectAll("text")
+	        .style("font-size", function (d) {
+	        return '20';
+	    })
+	        .style("fill", function (d) {
+	        return '#ff0000';
+	    })
+
 	}
 
 	//Setup and render the autocomplete
@@ -215,7 +163,7 @@ function rescale() {
 		console.log("Called Round 2");
 		root = json;
 		traverse(root);
-
+		console.log(nameArray);
 	});*/
 
 	/*function separation(a, b) {
@@ -257,8 +205,14 @@ function rescale() {
 				.classed('info', true)
 				.attr('x', -30)
 				.attr('y', -10)
+				.style("font-size", function (d) {
+					return '20';
+				})
+	        .style("fill", function (d) {
+					return '#ff0000';
+				})
 				.text(function (d) {
-				return d.humanname;
+				return d.desc;
 			});
 		})
 			.on("mouseout", function () {
@@ -320,7 +274,17 @@ function rescale() {
 		var link = vis.selectAll("path.link")
 			.data(tree.links(nodes), function (d) {
 			return d.target.id;
-		});
+			})
+			/*.each(function(d){
+			  if(d.source.multi == "yes"){
+			    console.log(d.source)
+				link.enter().insert("svg:path", "g")
+				  .style("fill", function (d) {
+					return '#ff0000';
+				})
+			  }
+			  });*/
+		
 
 		// Enter any new links at the parent's previous position.
 		link.enter().insert("svg:path", "g")
@@ -338,6 +302,16 @@ function rescale() {
 			.transition()
 			.duration(duration)
 			.attr("d", diagonal);
+		
+		
+		// Highlight "multi" links
+		link.style("stroke", function (d) {
+		  if (d.target.multi == "yes"){
+		    return "#ffff00"} else {
+			return "#ccc"
+			}
+			
+			})
 
 		// Transition links to their new position.
 		link.transition()
@@ -408,5 +382,83 @@ function rescale() {
 	function mouseout(d) {
 		d3.select(this).select("text.hover").remove();
 	}
+	
+	
+	
+	/* ------------------------------------
+
+	Expand/collapse button functionality
+
+	---------------------------------------*/
+	
+	$("#expandAll").on('click', function () {
+		console.log('Clicked expand all');
+
+		function expandAll(d) {
+		    console.log("Expanding");
+			if (d._children) {
+			console.log("Expanding children");
+				d._children.forEach(expandAll);
+				toggle(d);
+				update(root);
+			}
+		}
+		
+		// Toggle children.
+		function toggle(d) {
+		  //console.log(d.children);
+		  console.log(d._children);
+			if (d.children) {
+				console.log("!!!!");
+				d._children = d.children;
+				d.children = null;
+			} else {
+			console.log("....");
+				d.children = d._children;
+				d._children = null;
+			}
+		}
+		//console.log(root);
+		if (root.children){
+		  //close tree
+		  console.log("Closing tree");
+		  toggle(root);
+		  //console.log(root._children);
+		  update(root);
+		  console.log(root._children);
+		  root._children.forEach(expandAll);
+		  update(root);
+		  
+		  }
+		else{
+		  console.log("Hidden children");
+		  /*root._children.forEach(expandAll); 
+		  update(root);*/
+		  };
+		//toggle(root.children);
+
+		//root._children.forEach(expandAll); 
+		//update(root);
+	});
+
+
+	$("#collapseAll").on('click', function (e) {
+	
+	    if(e.ctrlKey){
+          console.log('ctrl');
+		  }
+
+		/*function moveChildren(node) {
+		if(node.children) {
+			node.children.forEach(function(c) { moveChildren(c); });
+			node._children = node.children;
+			node.children = null;
+		}
+	}
+	moveChildren(root);*/
+		toggle(root);
+		update(root);
+	});
+
 	
 });

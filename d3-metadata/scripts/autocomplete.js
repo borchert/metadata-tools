@@ -49,7 +49,7 @@ function autocomplete(parent) {
         _selection.each(function (data) {
 
             // Select the svg element, if it exists.
-            var container = d3.select(this).select("#bp-ac").data([data]);
+            var container = d3.select(this).select("#search").data([data]);
             var enter = container.enter()
                     .append("div")
                     .attr("id","bp-ac")
