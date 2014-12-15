@@ -136,6 +136,8 @@ function rescale() {
 		.attr("width", w + m[1] + m[3])
 		.attr("height", h + m[0] + m[2])
 		.append("svg:g")
+          .attr("class","drawarea")
+		.append("svg:g")
 		  .on("mousedown", mousedown)
 		.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
@@ -340,7 +342,7 @@ function rescale() {
 		});
 		var circle = node.selectAll("circle")
 		
-		// Control-click to expand row, animate click
+		// Alt-click to expand row, animate click
 		circle.on('click', function (d) {
 		  function toggleRow(d) {
 				if (d._children) {
@@ -348,14 +350,21 @@ function rescale() {
 					toggle(d);
 				}
 			  }
-		
-		    if(window.event.ctrlKey){
+			console.log("Inside click function");
+		    if(window.event.altKey){
 			  if (d._children){
 			    d._children.forEach(toggleRow);
 			  }
 			}
 			d3.select(this).attr("r", 12);
 		});
+		
+			
+	// Pan/zoom
+	d3.select("svg")
+      .call(d3.behavior.zoom()
+        .scaleExtent([0.5, 5])
+        .on("zoom", zoom));
 	}
 
 	// Toggle children.
@@ -382,7 +391,64 @@ function rescale() {
 	function mouseout(d) {
 		d3.select(this).select("text.hover").remove();
 	}
+
+		
+    function zoom() {
+    var scale = d3.event.scale,
+        translation = d3.event.translate,
+        tbound = -h * scale,
+        bbound = h * scale,
+        lbound = (-w + m[1]) * scale,
+        rbound = (w - m[3]) * scale;
+    // limit translation to thresholds
+    translation = [
+        Math.max(Math.min(translation[0], rbound), lbound),
+        Math.max(Math.min(translation[1], bbound), tbound)
+    ];
+    d3.select(".drawarea")
+        .attr("transform", "translate(" + translation + ")" +
+              " scale(" + scale + ")");
+}
+	// 
+	$('.rowAbbr').mouseover(function() {
+	  fullName = $(this).attr('id')+"Full";
+	  $(this).css("background", "lightgrey");
+	  fullNameTag = ('#' + fullName)
+	  text = $(fullNameTag).text();
+	  slice = fullName.slice(0,2) + "_";
+	  $(fullNameTag).css("background", "lightgrey");
+	  var node = d3.selectAll("g.node")
+	     .forEach(function(c) { console.log((c.name)) })
+	  //node = d3.selectAll("[id='" + d.name + "']")
+	});
 	
+	$('.rowAbbr').mouseout(function() {  
+	  $(this).css("background", "white");
+	  fullNameTag = ('#' + fullName)
+	  $(fullNameTag).css("background", "white");
+	});
+	
+	$('.rowAbbr').on("click", function() {
+	  alert( $(this).attr('id')+"Full");
+	});
+	
+	$('.rowFullName').mouseover(function() {
+	  abbrName = $(this).attr('id').slice(0,-4);
+	  $(this).css("background", "lightgrey");
+	  abbrNameTag = ('#' + abbrName)
+	  //text = $(fullNameTag).text();
+	  //slice = fullName.slice(0,2) + "_";
+	  $(abbrNameTag).css("background", "lightgrey");
+	  //var node = d3.selectAll("g.node")
+	     //.forEach(function(c) { console.log((c.name)) })*/
+	  //node = d3.selectAll("[id='" + d.name + "']")
+	});
+	
+	$('.rowFullName').mouseout(function() {  
+	  $(this).css("background", "white");
+	  abbrNameTag = ('#' + abbrName)
+	  $(abbrNameTag).css("background", "white");
+	});
 	
 	
 	/* ------------------------------------

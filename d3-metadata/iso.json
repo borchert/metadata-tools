@@ -122,13 +122,13 @@
             },
             {
               "name":"gmd:role",
-              "easyname":"",
+              "easyname":"Role",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:CI_RoleCode",
-                  "easyname":"",
+                  "easyname":"CI Role Code",
                   "desc":"",
                   "multi":""
                 }
@@ -140,61 +140,61 @@
     },
     {
       "name":"gmd:dateStamp",
-      "easyname":"",
+      "easyname":"Date Stamp",
       "desc":"",
       "multi":""
     },
     {
       "name":"gmd:metadataStandardName",
-      "easyname":"",
+      "easyname":"Metadata Standard Name",
       "desc":"",
       "multi":""
     },
     {
       "name":"gmd:metadataStandardVersion",
-      "easyname":"",
+      "easyname":"Metadata Standard Version",
       "desc":"",
       "multi":""
     },
     {
       "name":"gmd:referenceSystemInfo",
-      "easyname":"",
+      "easyname":"Reference System Info",
       "desc":"",
       "multi":"",
       "children":[
         {
           "name":"gmd:MD_ReferenceSystem",
-          "easyname":"",
+          "easyname":"MD Reference System",
           "desc":"",
           "multi":"",
           "children":[
             {
               "name":"gmd:referenceSystemIdentifier",
-              "easyname":"",
+              "easyname":"Reference System Identifier",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:RS_Identifier",
-                  "easyname":"",
+                  "easyname":"RS Identifier",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:code",
-                      "easyname":"",
+                      "easyname":"Code",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:codeSpace",
-                      "easyname":"",
+                      "easyname":"Code Space",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:version",
-                      "easyname":"",
+                      "easyname":"Version",
                       "desc":"",
                       "multi":""
                     }
@@ -208,61 +208,61 @@
     },
     {
       "name":"gmd:identificationInfo",
-      "easyname":"",
+      "easyname":"Identification Info",
       "desc":"",
       "multi":"",
       "children":[
         {
           "name":"gmd:MD_DataIdentification",
-          "easyname":"",
+          "easyname":"MD Data Identification",
           "desc":"",
           "multi":"",
           "children":[
             {
               "name":"gmd:citation",
-              "easyname":"",
+              "easyname":"Citation",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:CI_Citation",
-                  "easyname":"",
+                  "easyname":"CI Citation",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:title",
-                      "easyname":"",
+                      "easyname":"Title",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:alternateTitle",
-                      "easyname":"",
+                      "easyname":"Alternate Title",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:date",
-                      "easyname":"",
+                      "easyname":"Date",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_Date",
-                          "easyname":"",
+                          "easyname":"CI Date",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:date",
-                              "easyname":"",
+                              "easyname":"Date",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:dateType",
-                              "easyname":"",
+                              "easyname":"Date Type",
                               "desc":"",
                               "multi":""
                             }
@@ -272,31 +272,31 @@
                     },
                     {
                       "name":"gmd:identifier",
-                      "easyname":"",
+                      "easyname":"Identifier",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:RS_Identifier",
-                          "easyname":"",
+                          "easyname":"RS Identifier",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:code",
-                              "easyname":"",
+                              "easyname":"Code",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:codeSpace",
-                              "easyname":"",
+                              "easyname":"Code Space",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:version",
-                              "easyname":"",
+                              "easyname":"Version",
                               "desc":"",
                               "multi":""
                             }
@@ -306,7 +306,7 @@
                     },
                     {
                       "name":"gmd:otherCitationDetails",
-                      "easyname":"",
+                      "easyname":"Other Citation Details",
                       "desc":"",
                       "multi":""
                     }
@@ -316,97 +316,97 @@
             },
             {
               "name":"gmd:abstract",
-              "easyname":"",
+              "easyname":"Abstract",
               "desc":"",
               "multi":""
             },
             {
               "name":"gmd:status",
-              "easyname":"",
+              "easyname":"Status",
               "desc":"",
               "multi":""
             },
             {
               "name":"gmd:pointOfContact",
-              "easyname":"",
+              "easyname":"Point of Contact",
               "desc":"",
               "multi":"yes",
               "children":[
                 {
                   "name":"gmd:CI_ResponsibleParty",
-                  "easyname":"",
+                  "easyname":"CI Responsible Party",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:individualName",
-                      "easyname":"",
+                      "easyname":"Individual Name",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:organisationName",
-                      "easyname":"",
+                      "easyname":"Organisation Name",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:contactInfo",
-                      "easyname":"",
+                      "easyname":"Contact Info",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_Contact",
-                          "easyname":"",
+                          "easyname":"CI Contact",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:address",
-                              "easyname":"",
+                              "easyname":"Address",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:CI_Address",
-                                  "easyname":"",
+                                  "easyname":"CI Address",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gmd:deliveryPoint",
-                                      "easyname":"",
+                                      "easyname":"Delivery Point",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:city",
-                                      "easyname":"",
+                                      "easyname":"City",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:administrativeArea",
-                                      "easyname":"",
+                                      "easyname":"Administrative Area",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:postalCode",
-                                      "easyname":"",
+                                      "easyname":"Postal Code",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:country",
-                                      "easyname":"",
+                                      "easyname":"Country",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:electronicMailAddress",
-                                      "easyname":"",
+                                      "easyname":"Electronic Mail Address",
                                       "desc":"",
                                       "multi":""
                                     }
@@ -420,13 +420,13 @@
                     },
                     {
                       "name":"gmd:role",
-                      "easyname":"",
+                      "easyname":"Role",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_RoleCode",
-                          "easyname":"",
+                          "easyname":"CI Role Code",
                           "desc":"",
                           "multi":""
                         }
@@ -438,25 +438,25 @@
             },
             {
               "name":"gmd:resourceMaintenance",
-              "easyname":"",
+              "easyname":"Resource Maintenance",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_MaintenanceInformation",
-                  "easyname":"",
+                  "easyname":"MD Maintenance Information",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:maintenanceAndUpdateFrequency",
-                      "easyname":"",
+                      "easyname":"Maintenance and Update Frequency",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:maintenanceNote",
-                      "easyname":"",
+                      "easyname":"Maintenance Note",
                       "desc":"",
                       "multi":""
                     }
@@ -466,25 +466,25 @@
             },
             {
               "name":"gmd:graphicOverview",
-              "easyname":"",
+              "easyname":"Graphic Overview",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_BrowseGraphic",
-                  "easyname":"",
+                  "easyname":"MD Browse Graphic",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:fileName",
-                      "easyname":"",
+                      "easyname":"File Name",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:fileDescription",
-                      "easyname":"",
+                      "easyname":"File Description",
                       "desc":"",
                       "multi":""
                     }
@@ -494,67 +494,67 @@
             },
             {
               "name":"gmd:descriptiveKeywords",
-              "easyname":"",
+              "easyname":"Descriptive Keywords",
               "desc":"",
               "multi":"yes",
               "children":[
                 {
                   "name":"gmd:MD_Keywords",
-                  "easyname":"",
+                  "easyname":"MD Keywords",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:keyword",
-                      "easyname":"",
+                      "easyname":"Keyword",
                       "desc":"",
                       "multi":"yes"
                     },
                     {
                       "name":"gmd:type",
-                      "easyname":"",
+                      "easyname":"Type",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:thesaurusName",
-                      "easyname":"",
+                      "easyname":"Thesaurus Name",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_Citation",
-                          "easyname":"",
+                          "easyname":"CI Citation",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:title",
-                              "easyname":"",
+                              "easyname":"Title",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:date",
-                              "easyname":"",
+                              "easyname":"Date",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:CI_Date",
-                                  "easyname":"",
+                                  "easyname":"CI Date",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gmd:date",
-                                      "easyname":"",
+                                      "easyname":"Date",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:dateType",
-                                      "easyname":"",
+                                      "easyname":"Date Type",
                                       "desc":"",
                                       "multi":""
                                     }
@@ -572,31 +572,31 @@
             },
             {
               "name":"gmd:resourceConstraints",
-              "easyname":"",
+              "easyname":"Resource Constraints",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_LegalConstraints",
-                  "easyname":"",
+                  "easyname":"MD Legal Constraints",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:useLimitation",
-                      "easyname":"",
+                      "easyname":"Use Limitation",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:accessConstraints",
-                      "easyname":"",
+                      "easyname":"Access Constraints",
                       "desc":"",
                       "multi":"yes"
                     },
                     {
                       "name":"gmd:otherConstraints",
-                      "easyname":"",
+                      "easyname":"Other Constraints",
                       "desc":"",
                       "multi":"yes"
                     }
@@ -606,25 +606,25 @@
             },
             {
               "name":"gmd:spatialRepresentationType",
-              "easyname":"",
+              "easyname":"Spatial Representation Type",
               "desc":"",
               "multi":""
             },
             {
               "name":"gmd:spatialResolution",
-              "easyname":"",
+              "easyname":"Spatial Resolution",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_Resolution",
-                  "easyname":"",
+                  "easyname":"MD Resolution",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:distance",
-                      "easyname":"",
+                      "easyname":"Distance",
                       "desc":"",
                       "multi":""
                     }
@@ -634,67 +634,67 @@
             },
             {
               "name":"gmd:language",
-              "easyname":"",
+              "easyname":"Language",
               "desc":"",
               "multi":""
             },
             {
               "name":"gmd:topicCategory",
-              "easyname":"",
+              "easyname":"Topic Category",
               "desc":"",
               "multi":"yes"
             },
             {
               "name":"gmd:extent",
-              "easyname":"",
+              "easyname":"Extent",
               "desc":"",
               "multi":"yes",
               "children":[
                 {
                   "name":"gmd:EX_Extent",
-                  "easyname":"",
+                  "easyname":"EX Extent",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:geographicElement",
-                      "easyname":"",
+                      "easyname":"Geographic Element",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:EX_GeographicDescription",
-                          "easyname":"",
+                          "easyname":"EX Geographic Description",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:geographicIdentifier",
-                              "easyname":"",
+                              "easyname":"Geographic Identifier",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:RS_Identifier",
-                                  "easyname":"",
+                                  "easyname":"RS Identifier",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gmd:code",
-                                      "easyname":"",
+                                      "easyname":"Code",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:codeSpace",
-                                      "easyname":"",
+                                      "easyname":"Code Space",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gmd:version",
-                                      "easyname":"",
+                                      "easyname":"Version",
                                       "desc":"",
                                       "multi":""
                                     }
@@ -712,49 +712,49 @@
             },
             {
               "name":"gmd:extent",
-              "easyname":"",
+              "easyname":"Extent",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:EX_Extent",
-                  "easyname":"",
+                  "easyname":"EX Extent",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:temporalElement",
-                      "easyname":"",
+                      "easyname":"Temporal Element",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:EX_TemporalExtent",
-                          "easyname":"",
+                          "easyname":"EX Temporal Extent",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:extent",
-                              "easyname":"",
+                              "easyname":"Extent",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
-                                  "name":"gml:TimePeriod",
-                                  "easyname":"",
+                                  "name":"gml:timePeriod",
+                                  "easyname":"Time Period",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gml:beginPosition",
-                                      "easyname":"",
+                                      "easyname":"Begin Position",
                                       "desc":"",
                                       "multi":""
                                     },
                                     {
                                       "name":"gml:endPosition",
-                                      "easyname":"",
+                                      "easyname":"End Position",
                                       "desc":"",
                                       "multi":""
                                     }
@@ -772,55 +772,55 @@
             },
             {
               "name":"gmd:extent",
-              "easyname":"",
+              "easyname":"Extent",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:EX_Extent",
-                  "easyname":"",
+                  "easyname":"EX Extent",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:geographicElement",
-                      "easyname":"",
+                      "easyname":"Geographic Element",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:EX_GeographicBoundingBox",
-                          "easyname":"",
+                          "easyname":"EX Geographic Bounding Box",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:extentTypeCode",
-                              "easyname":"",
+                              "easyname":"Extent Type Code",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:westBoundLongitude",
-                              "easyname":"",
+                              "easyname":"West Bound Longitude",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:eastBoundLongitude",
-                              "easyname":"",
+                              "easyname":"East Bound Longitude",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:southBoundLatitude",
-                              "easyname":"",
+                              "easyname":"South Bound Latitude",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:northBoundLatitude",
-                              "easyname":"",
+                              "easyname":"North Bound Latitude",
                               "desc":"",
                               "multi":""
                             }
@@ -834,7 +834,7 @@
             },
             {
               "name":"gmd:supplementalInformation",
-              "easyname":"",
+              "easyname":"Supplemental Information",
               "desc":"",
               "multi":""
             }
@@ -844,37 +844,37 @@
     },
     {
       "name":"gmd:distributionInfo",
-      "easyname":"",
+      "easyname":"Distribution Info",
       "desc":"",
       "multi":"",
       "children":[
         {
           "name":"gmd:MD_Distribution",
-          "easyname":"",
+          "easyname":"MD Distribution",
           "desc":"",
           "multi":"",
           "children":[
             {
               "name":"gmd:distributionFormat",
-              "easyname":"",
+              "easyname":"Distribution Format",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_Format",
-                  "easyname":"",
+                  "easyname":"MD Format",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:name",
-                      "easyname":"",
+                      "easyname":"Name",
                       "desc":"",
                       "multi":""
                     },
                     {
                       "name":"gmd:version",
-                      "easyname":"",
+                      "easyname":"Version",
                       "desc":"",
                       "multi":""
                     }
@@ -884,91 +884,91 @@
             },
             {
               "name":"gmd:distributor",
-              "easyname":"",
+              "easyname":"Distributor",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:MD_Distributor",
-                  "easyname":"",
+                  "easyname":"MD Distributor",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:distibutorContact",
-                      "easyname":"",
+                      "easyname":"Distributor Contact",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_ResponsibleParty",
-                          "easyname":"",
+                          "easyname":"CI Responsible Party",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:organisationName",
-                              "easyname":"",
+                              "easyname":"Organisation Name",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:contactInfo",
-                              "easyname":"",
+                              "easyname":"Contact Info",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:CI_Contact",
-                                  "easyname":"",
+                                  "easyname":"CI Contact",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gmd:address",
-                                      "easyname":"",
+                                      "easyname":"Address",
                                       "desc":"",
                                       "multi":"",
                                       "children":[
                                         {
                                           "name":"gmd:CI_Address",
-                                          "easyname":"",
+                                          "easyname":"CI Address",
                                           "desc":"",
                                           "multi":"",
                                           "children":[
                                             {
                                               "name":"gmd:deliveryPoint",
-                                              "easyname":"",
+                                              "easyname":"Delivery Point",
                                               "desc":"",
                                               "multi":""
                                             },
                                             {
                                               "name":"gmd:city",
-                                              "easyname":"",
+                                              "easyname":"City",
                                               "desc":"",
                                               "multi":""
                                             },
                                             {
                                               "name":"gmd:administrativeArea",
-                                              "easyname":"",
+                                              "easyname":"Administrative Area",
                                               "desc":"",
                                               "multi":""
                                             },
                                             {
                                               "name":"gmd:postalCode",
-                                              "easyname":"",
+                                              "easyname":"Postal Code",
                                               "desc":"",
                                               "multi":""
                                             },
                                             {
                                               "name":"gmd:country",
-                                              "easyname":"",
+                                              "easyname":"County",
                                               "desc":"",
                                               "multi":""
                                             },
                                             {
                                               "name":"gmd:electronicMailAddress",
-                                              "easyname":"",
+                                              "easyname":"Electronic Mail Address",
                                               "desc":"",
                                               "multi":""
                                             }
@@ -982,13 +982,13 @@
                             },
                             {
                               "name":"gmd:role",
-                              "easyname":"",
+                              "easyname":"Role",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:CI_RoleCode",
-                                  "easyname":"",
+                                  "easyname":"CI Role Code",
                                   "desc":"",
                                   "multi":""
                                 }
@@ -1004,37 +1004,37 @@
             },
             {
               "name":"gmd:transferOptions",
-              "easyname":"",
+              "easyname":"Transfer Options",
               "desc":"",
               "multi":"yes",
               "children":[
                 {
                   "name":"gmd:MD_DigitalTransferOptions",
-                  "easyname":"",
+                  "easyname":"MD Digital Transfer Options",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:onLine",
-                      "easyname":"",
+                      "easyname":"Online",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:CI_OnlineResource",
-                          "easyname":"",
+                          "easyname":"CI Online Resource",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:linkage",
-                              "easyname":"",
+                              "easyname":"Linkage",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:URL",
-                                  "easyname":"",
+                                  "easyname":"URL",
                                   "desc":"",
                                   "multi":""
                                 }
@@ -1042,19 +1042,19 @@
                             },
                             {
                               "name":"gmd:name",
-                              "easyname":"",
+                              "easyname":"Name",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:description",
-                              "easyname":"",
+                              "easyname":"Description",
                               "desc":"",
                               "multi":""
                             },
                             {
                               "name":"gmd:function",
-                              "easyname":"",
+                              "easyname":"Function",
                               "desc":"",
                               "multi":""
                             }
@@ -1072,61 +1072,61 @@
     },
     {
       "name":"gmd:dataQualityInfo",
-      "easyname":"",
+      "easyname":"Data Quality Info",
       "desc":"",
       "multi":"",
       "children":[
         {
           "name":"gmd:CI_ResponsibleParty",
-          "easyname":"",
+          "easyname":"CI Responsible Party",
           "desc":"",
           "multi":"",
           "children":[
             {
               "name":"gmd:DQ_DataQuality",
-              "easyname":"",
+              "easyname":"DQ Data Quality",
               "desc":"",
               "multi":"",
               "children":[
                 {
                   "name":"gmd:scope",
-                  "easyname":"",
+                  "easyname":"Scope",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:DQ_scope",
-                      "easyname":"",
+                      "easyname":"DQ Scope",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:level",
-                          "easyname":"",
+                          "easyname":"Level",
                           "desc":"",
                           "multi":""
                         },
                         {
                           "name":"gmd:levelDescription",
-                          "easyname":"",
+                          "easyname":"Level Description",
                           "desc":"",
                           "multi":"",
                           "children":[
                             {
                               "name":"gmd:CI_ResponsibleParty",
-                              "easyname":"",
+                              "easyname":"CI Responsible Party",
                               "desc":"",
                               "multi":"",
                               "children":[
                                 {
                                   "name":"gmd:MD_ScopeDescription",
-                                  "easyname":"",
+                                  "easyname":"MD Scope Description",
                                   "desc":"",
                                   "multi":"",
                                   "children":[
                                     {
                                       "name":"gmd:other",
-                                      "easyname":"",
+                                      "easyname":"Other",
                                       "desc":"",
                                       "multi":""
                                     }
@@ -1142,19 +1142,19 @@
                 },
                 {
                   "name":"gmd:lineage",
-                  "easyname":"",
+                  "easyname":"Lineage",
                   "desc":"",
                   "multi":"",
                   "children":[
                     {
                       "name":"gmd:LI_Lineage",
-                      "easyname":"",
+                      "easyname":"LI Lineage",
                       "desc":"",
                       "multi":"",
                       "children":[
                         {
                           "name":"gmd:statement",
-                          "easyname":"",
+                          "easyname":"Statement",
                           "desc":"",
                           "multi":""
                         }

@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta content="IE=EmulateIE9" http-equiv="X-UA-COMPATIBLE">
-    <script src="scripts/d3.min.js" type="text/javascript"></script>
-    <script src="scripts/autocomplete.js" type="text/javascript"></script>
+    <script src="lib/d3.min.js" type="text/javascript"></script>
+    <script src="lib/autocomplete.js" type="text/javascript"></script>
     <script src="../libraries/jquery-2.1.1.min.js"></script>
     <script src="lib/metadata.js"></script>
     <link href="fonts/bariol/bariol.css" rel="stylesheet">
@@ -30,158 +30,158 @@
 
             <table class="tg">
                 <tr>
-                    <th class="tg-hgcj" colspan="2">Package Abbreviations</th>
+                    <th class="colHeader" colspan="2">Package Abbreviations</th>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">CI</td>
+                    <td class="rowAbbr" id="ci">CI</td>
 
-                    <td class="tg-031e">Citation</td>
+                    <td class="rowFullName" id="ciFull">Citation</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">DQ</td>
+                    <td class="rowAbbr" id="dq">DQ</td>
 
-                    <td class="tg-031e">Data Quality</td>
+                    <td class="rowFullName" id="dqFull">Data Quality</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">DS</td>
+                    <td class="rowAbbr" id="ds">DS</td>
 
-                    <td class="tg-031e">Dataset</td>
+                    <td class="rowFullName" id="dsFull">Dataset</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">EX</td>
+                    <td class="rowAbbr" id="ex">EX</td>
 
-                    <td class="tg-031e">Extent</td>
+                    <td class="rowFullName" id="exFull">Extent</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">FC</td>
+                    <td class="rowAbbr" id="fc">FC</td>
 
-                    <td class="tg-031e">Feature Catalogue</td>
+                    <td class="rowFullName" id="fcFull">Feature Catalogue</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">GM</td>
+                    <td class="rowAbbr" id="gm">GM</td>
 
-                    <td class="tg-031e">Geometry</td>
+                    <td class="rowFullName" id="gmFull">Geometry</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">LE</td>
+                    <td class="rowAbbr" id="le">LE</td>
 
-                    <td class="tg-031e">Lineage Extended</td>
+                    <td class="rowFullName" id="leFull">Lineage Extended</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">LI</td>
+                    <td class="rowAbbr" id="li">LI</td>
 
-                    <td class="tg-031e">Lineage</td>
+                    <td class="rowFullName" id="liFull">Lineage</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">MD</td>
+                    <td class="rowAbbr" id="md">MD</td>
 
-                    <td class="tg-031e">Metadata</td>
+                    <td class="rowFullName" id="mdFull">Metadata</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">MI</td>
+                    <td class="rowAbbr" id="mi">MI</td>
 
-                    <td class="tg-031e">Metadata for Imagery</td>
+                    <td class="rowFullName" id="miFull">Metadata for Imagery</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">RS</td>
+                    <td class="rowAbbr" id="rs">RS</td>
 
-                    <td class="tg-031e">Reference System</td>
+                    <td class="rowFullName" id="rsFull">Reference System</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">SV</td>
+                    <td class="rowAbbr" id="sv">SV</td>
 
-                    <td class="tg-031e">Services</td>
+                    <td class="rowFullName" id="svFull">Services</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">QE</td>
+                    <td class="rowAbbr" id="qe">QE</td>
 
-                    <td class="tg-031e">Data Quality Extended</td>
+                    <td class="rowFullName" id="qeFull">Data Quality Extended</td>
                 </tr>
             </table>
 
             <table class="tg">
                 <tr>
-                    <th class="tg-hgcj" colspan="2">Namespace
+                    <th class="colHeader" colspan="2">Namespace
                     Abbreviations</th>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gco</td>
+                    <td class="rowAbbr" id="gco">gco</td>
 
-                    <td class="tg-031e">Geographic Common extensible markup
+                    <td class="rowFullName" id="gcoFull">Geographic Common extensible markup
                     language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gfc</td>
+                    <td class="rowAbbr" id="gfc">gfc</td>
 
-                    <td class="tg-031e">Geographic Feature Catalogue extensible
+                    <td class="rowFullName" id="gfcFull">Geographic Feature Catalogue extensible
                     markup language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gmd</td>
+                    <td class="rowAbbr" id="gmd">gmd</td>
 
-                    <td class="tg-031e">Geographic Metadata extensible markup
+                    <td class="rowFullName" id="gmdFull">Geographic Metadata extensible markup
                     language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gmx</td>
+                    <td class="rowAbbr" id="gmx">gmx</td>
 
-                    <td class="tg-031e">Geographic Metadata XML schema</td>
+                    <td class="rowFullName" id="gmxFull">Geographic Metadata XML schema</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gss</td>
+                    <td class="rowAbbr" id="gss">gss</td>
 
-                    <td class="tg-031e">Geographic Spatial Schema extensible
+                    <td class="rowFullName" id="gssFull">Geographic Spatial Schema extensible
                     markup language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gsr</td>
+                    <td class="rowAbbr" id="gsr">gsr</td>
 
-                    <td class="tg-031e">Geographic Spatial Referencing
+                    <td class="rowFullName" id="gsrFull">Geographic Spatial Referencing
                     extensible markup language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gts</td>
+                    <td class="rowAbbr" id="gts">gts</td>
 
-                    <td class="tg-031e">Geographic Temporal Schema extensible
+                    <td class="rowFullName" id="gtsFull">Geographic Temporal Schema extensible
                     markup language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">gml</td>
+                    <td class="rowAbbr" id="gml">gml</td>
 
-                    <td class="tg-031e">Geography Markup Language</td>
+                    <td class="rowFullName" id="gmlFull">Geography Markup Language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">xlink</td>
+                    <td class="rowAbbr" id="xlink">xlink</td>
 
-                    <td class="tg-031e">XML Linking Language</td>
+                    <td class="rowFullName" id="xlinkFull">XML Linking Language</td>
                 </tr>
 
                 <tr>
-                    <td class="tg-s6z2">xs</td>
+                    <td class="rowAbbr" id="xs">xs</td>
 
-                    <td class="tg-031e">W3C XML base schemas</td>
+                    <td class="rowFullName" id="xsFull">W3C XML base schemas</td>
                 </tr>
             </table>
         </div><!--<div>
