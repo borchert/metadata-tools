@@ -1,1 +1,253 @@
 characterSet – Character coding standard in the metadata.
+dataSetURI - Uniform Resource Identifier (URI) of the dataset to which the metadata applies. 
+locale - Other languages used in metadata free text descriptions.
+spatialRepresentationInfo – Digital representation of spatial information in the dataset.
+metadataExtensionInfo – Information describing metadata extensions
+contentInfo – Characteristics describing the feature catalogue, the coverage, and the image data.
+portrayalCatalogueInfo – A portrayal catalogue is a collection of defined symbols used to depict, to humans, features on a map. 
+metadataConstraints – The limitations or constraints on the use of or access of the metadata. 
+applicationSchemaInfo – Information about the conceptual schema of the dataset.
+metadataMaintenance – Information about metadata updates
+
+CI_Citation package - 
+  edition – Version of the cited resource.
+  editionDate – Reference date for the cited resource.
+  citedResponsibleParty – Identification of the contact for the resource
+  presentationForm – The form in which the resource is available. 
+  series – Information about the series or collection of which the resource is a part.
+  collectiveTitle – Information about the combined resource of which the dataset is a part. The description may include information on other volumes which are also available. 
+  ISBN – The international standard book number (ISBN) assigned by an ISBN authority to a publication such as a book, a pamphlet, an educational kit, a microform, a CD-ROM or another digital or electronic publication.
+  ISSN – The international standard serial number (ISSN) assigned by an ISSN authority to a serial publication, such as a periodical, a newspaper, an annual, a journal, or a monographic series.
+  
+CI_Contact package -
+  phone – Telephone numbers to contact the organisation or individual.
+  onlineResource – Information about Internet hosted resources: availability; URL; protocol used; resource name; resource description, and resource function.
+  hoursOfService – Time period (including time zone) when individuals can contact the organisation or individual. 
+  contactInstructions – Supplemental instructions on how or when to contact the individual or organisation.
+  
+CI_OnlineResource package -
+  protocol – The connection protocol to be used, such as http, ftp, etc.
+  applicationProfile – Name of an application profile that can be used with the online resource. 
+  
+CI_ResponsibleParty package -
+  individualName – The name of the responsible individual.
+  positionName – Position of the responsible person
+  
+CI_Series package -
+  entire package
+  
+CI_Telephone package -
+  entire package
+  
+DQ_ConformanceResult package -
+  entire package
+  
+DQ_DataQuality package - 
+  report – A statement of the quality of the resource specified by the scope.
+  
+DQ_QuantitativeResult package -
+  entire package
+  
+DQ_Scope package -
+  extent – The spatial (horizontal and/or vertical) and the temporal delineation of the resource.
+  
+DQ -
+  DQ_CompletenessCommission
+  DQ_CompletenessOmission
+  DQ_ConceptualConsistency
+  DQ_DomainConsistency
+  DQ_FormatConsistency
+  DQ_TopologicalConsistency
+  DQ_AbsoluteExternalPositionalAccuracy
+  DQ_GriddedDataPositionalAccuracy
+  DQ_RelativeInternalPositionalAccuracy
+  DQ_ThematicClassificationCorrectness
+  DQ_NonQuantitativeAttributeAccuracy
+  DQ_QuantitativeAttributeAccuracy
+  DQ_AccuracyOfATimeMeasurement
+  DQ_TemporalConsistency
+  
+EX_BoundingPolygon package -
+  entire package
+  
+EX_Extent package - 
+  description – Spatial and temporal extent for the referring object
+  verticalElement – Provides vertical component of the extent of the referring object.
+  
+EX_GeographicDescription package -
+  extentTypeCode – Indication of whether the bounding polygon encompasses an area covered by the data or an area where data is not present.
+  
+EX_GeographicExtent package -
+  entire package
+  
+EX_TemporalExtent package -
+  TimeInstant – Single date and Time
+  TimePeriod -
+    description – description of the date and time documented
+	duration – Length of time
+	timeInterval – Frequency between time events based on floating point values for temporal length.
+	
+  
+EX_VerticalExtent package -
+  entire package
+
+LI_Lineage package -
+  processStep – The events in the development of the dataset.
+  source – Information on the sources used in the development of the dataset.
+  
+LI_ProcessStep package -
+  entire package
+  
+LI_Source package -
+  entire package
+  
+MD_AggregateInformation package -
+  entire package
+  
+MD_ApplicationSchemaInformation package -
+  entire package
+  
+MD_Band package -
+  entire package
+
+MD_BrowseGraphic
+  fileType – Description of the graphic file format.
+
+MD_Constraints package -
+  entire package
+  
+MD_CoverageDescription package -
+  entire package
+  
+MD_DataIdentification package -
+  purpose – Summary of the intentions for which the dataset was developed.
+  credit – Recognition of those who contributed to the dataset.
+  resourceFormat – Provides a description of the format of the resource(s).
+  resourceSpecificUsage – Provides basic information about specific application(s) for which the resource(s) has been or is being used by different users.
+  aggregationInfo – The citation for the aggregate dataset or the name of the aggregate dataset, the type of aggregate dataset, and optionally the activity which produced the dataset. 
+  characterSet – Character coding standard in the dataset
+  environmentDescription – Describes the dataset’s processing environment. Includes information, such as software, computer operating system, filename, and dataset size.
+  
+MD_DigitalTransferOptions package -
+  unitsOfDistribution – Tiles, layers, geographic areas, etc. in which the data is available
+  transferSize – Estimated size of the transfer unit in the specified format, expressed in megabytes.
+  offLine – Information about the offline distribution media.
+  
+MD_Dimension package -
+  entire package
+  
+MD_Distributor package -
+  distributionOrderProcess – The process to follow when obtaining the data/dataset.
+  distributorFormat – Provides information about the format used by the distributor
+  distributorTransferOptions – Provides information about the technical means and media used by the distributor.
+  
+MD_ExtendedElementInformation package -
+  entire package
+  
+MD_FeatureCatalogueDescription package -
+  entire package
+  
+MD_Format package -
+  amendmentNumber – Format version amendment number.
+  specification – The subset name, profile, or product specification of the format.
+  fileDecompressionTechnique – Description of recommended processes or algorithms to apply to the compressed resource.
+  formatDistributor – Provides information about the distributor’s format.
+  
+MD_GeometricObjects package -
+  entire package
+  
+MD_Georectified package -
+  entire package
+  
+MD_Georeferenceable package -
+  entire package
+  
+MD_GridSpatialRepresentation package -
+  entire package
+  
+MD_Identifier package -
+  entire package
+
+MD_ImageDescription package -
+  entire package
+ 
+MD_LegalConstraints package -
+  useConstraints – Restrictions or limitations or warnings to protect privacy, intellectual property, or other special restrictions on the resource or the metadata.
+  
+MD_MaintenanceInformation package -
+  dateOfNextUpdate – The scheduled revision date for the resource.
+  userDefinedMaintenanceFrequency – The maintenance period other than those defined.
+  updateScope – Scope of data to which maintenance is applied.
+  updateScopeDescription – Additional information about the range or extent of the resource.
+  contact – Identification of and means of communicating with the person or organisation with responsibility for maintaining the resource.
+  
+MD_Medium package -
+  entire package
+  
+MD_MetadataExtensionInformation package -
+  entire package
+  
+MD_PortrayalCatalogueReference package -
+  entire package
+  
+MD_RangeDimension package -
+  entire package
+  
+MD_RepresentativeFraction package -
+  entire package
+  
+MD_Resolution package -
+  equivalentScale – Detail expressed as the numerical scale of a comparable hardcopy map or chart.
+
+MD_ScopeDescription package -
+  attributes – Attributes to which the information applies.
+  features – Features to which the information applies.
+  featureInstances – Feature instances to which the information applies.
+  attributeInstances – Attribute instances to which the information applies.
+  dataset – Dataset to which the information applies.
+  
+MD_SecurityConstraints package -
+  entire package
+  
+MD_StandardOrderProcess package -
+  entire package
+  
+MD_Usage package -
+  entire package
+  
+MD_VectorSpatialRepresentation package -
+  entire package
+  
+PT_ package -
+  entire package
+  
+RS_Identifier package -
+  authority – Recognized responsible party or organisation for a reference
+ 
+SV_ package -
+  entire package
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
