@@ -1,0 +1,362 @@
+{  
+  "name":"gmd:CI_Package",
+  "easyname":"CI Address",
+  "desc":"Physical and email address at which the organisation or individual may be contacted.",
+  "multi":"",
+  "children":[  
+    {  
+      "name":"gmd:CI_Address",
+      "easyname":"CI Address",
+      "desc":"Physical and email address at which the organisation or individual may be contacted.",
+      "multi":"",
+      "children":[  
+        {  
+          "name":"gmd:deliveryPoint",
+          "easyname":"Delivery Point",
+          "desc":"Address line for the location.",
+          "multi":"yes"
+        },
+        {  
+          "name":"gmd:city",
+          "easyname":"City",
+          "desc":"City of the address.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:administrativeArea",
+          "easyname":"Administrative Area",
+          "desc":"State or province of the address.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:postalCode",
+          "easyname":"Postal Code",
+          "desc":"Administrative spatial code which assists mail and parcel delivery.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:country",
+          "easyname":"Country",
+          "desc":"Country of the physical address.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:electronicMailAddress",
+          "easyname":"Electronic Mail Address",
+          "desc":"The electronic mailbox address of the responsible organisation or individual.",
+          "multi":"yes"
+        }
+      ]
+    },
+    {  
+      "name":"gmd:CI_Citation",
+      "easyname":"CI Citation",
+      "desc":"Bibliographic information to reference the resource.",
+      "multi":"",
+      "children":[  
+        {  
+          "name":"gmd:title",
+          "easyname":"Title",
+          "desc":"Name by which the cited resource is known.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:alternateTitle",
+          "easyname":"Alternate Title",
+          "desc":"Short name or other language name by which the cited information is known.",
+          "multi":""
+        },
+        {  
+          "name":"gmd:date",
+          "easyname":"Date",
+          "desc":"Reference date for the cited resource; reference date and event used to describe it.",
+          "multi":"",
+          "children":[  
+            {  
+              "name":"gmd:CI_Date",
+              "easyname":"CI Date",
+              "desc":"The date in which the event or action occurred.",
+              "multi":"",
+              "children":[  
+                {  
+                  "name":"gmd:date",
+                  "easyname":"Date",
+                  "desc":"The date in which the event or action occurred.",
+                  "multi":""
+                },
+                {  
+                  "name":"gmd:dateType",
+                  "easyname":"Date Type",
+                  "desc":"Identification of the event used for the temporal aspects in the resource.",
+                  "multi":""
+                }
+              ]
+            }
+          ]
+        },
+		{  
+          "name":"gmd:edition",
+          "easyname":"Edition",
+          "desc":"",
+          "multi":"",
+		  "children":[
+		    {  
+          "name":"gmd:Date",
+          "easyname":"Date",
+          "desc":"",
+          "multi":""
+		  },
+		  {  
+          "name":"gmd:DateTime",
+          "easyname":"Date Time",
+          "desc":"",
+          "multi":""
+		  }
+		  
+		  ]
+		  
+        },
+        {  
+          "name":"gmd:identifier",
+          "easyname":"Identifier",
+          "desc":"A unique value that identifies an object in a given namespace.",
+          "multi":"LINK TO RS"
+        },
+        {  
+          "name":"gmd:otherCitationDetails",
+          "easyname":"Other Citation Details",
+          "desc":"Other information to complete a citation.",
+          "multi":"",
+		  "children":[
+		    {  
+          "name":"gmd:MD_Identifier",
+          "easyname":"Date",
+          "desc":"",
+          "multi":""
+		  }
+		  
+		  ]
+        },
+      ]
+    },
+    {  
+      "name":"gmd:CI_Contact",
+      "easyname":"CI Contact",
+      "desc":"Information which assists one to contact an individual or organisation.",
+      "multi":"",
+      "children":[  
+        {  
+          "name":"gmd:address",
+          "easyname":"Address",
+          "desc":"Physical and email address to contact the organisation or individual.",
+          "multi":"",
+          "children":[  
+            {  
+              "name":"gmd:CI_Address",
+              "easyname":"CI Address",
+              "desc":"Physical and email address at which the organisation or individual may be contacted.",
+              "multi":"",
+              "children":[  
+                {  
+                  "name":"gmd:deliveryPoint",
+                  "easyname":"Delivery Point",
+                  "desc":"Address line for the location.",
+                  "multi":"yes"
+                },
+                {  
+                  "name":"gmd:city",
+                  "easyname":"City",
+                  "desc":"City of the address.",
+                  "multi":""
+                },
+                {  
+                  "name":"gmd:administrativeArea",
+                  "easyname":"Administrative Area",
+                  "desc":"State or province of the address.",
+                  "multi":""
+                },
+                {  
+                  "name":"gmd:postalCode",
+                  "easyname":"Postal Code",
+                  "desc":"Administrative spatial code which assists mail and parcel delivery.",
+                  "multi":""
+                },
+                {  
+                  "name":"gmd:country",
+                  "easyname":"Country",
+                  "desc":"Country of the physical address.",
+                  "multi":""
+                },
+                {  
+                  "name":"gmd:electronicMailAddress",
+                  "easyname":"Electronic Mail Address",
+                  "desc":"The electronic mailbox address of the responsible organisation or individual.",
+                  "multi":"yes"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+	{
+	  "name":"gmd:CI_Date",
+	  "easyname":"CI Date",
+	  "desc":"The date in which the event or action occurred.",
+	  "multi":"",
+	  "children":[
+		{
+		  "name":"gmd:date",
+		  "easyname":"Date",
+		  "desc":"The date in which the event or action occurred.",
+		  "multi":""
+		},
+		{
+		  "name":"gmd:dateType",
+		  "easyname":"Date Type",
+		  "desc":"Identification of the event used for the temporal aspects in the resource.",
+		  "multi":""
+		}
+	  ]
+	},
+	
+	{
+                          "name":"gmd:CI_OnlineResource",
+                          "easyname":"CI Online Resource",
+                          "desc":"Information on the Internet available resource.",
+                          "multi":"",
+                          "children":[
+                            {
+                              "name":"gmd:linkage",
+                              "easyname":"Linkage",
+                              "desc":"Internet location (address) for on-line access which uses a Uniform Resource Locator address or similar addressing scheme.",
+                              "multi":"",
+                              "children":[
+                                {
+                                  "name":"gmd:URL",
+                                  "easyname":"URL",
+                                  "desc":"A uniform resource locator.",
+                                  "multi":""
+                                }
+                              ]
+                            },
+                            {
+                              "name":"gmd:name",
+                              "easyname":"Name",
+                              "desc":"Name of the online resource.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:description",
+                              "easyname":"Description",
+                              "desc":"Description of the online resource that provides the resource sought.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:function",
+                              "easyname":"Function",
+                              "desc":"Code for function performed by the online resource.",
+                              "multi":""
+                            }
+                          ]
+                        },
+						{
+          "name":"gmd:CI_ResponsibleParty",
+          "easyname":"CI Responsible Party",
+          "desc":"The responsible party for the metadata content.",
+          "multi":"The identification of those responsible for the resource and the party’s role in the resource.",
+          "children":[
+            {
+              "name":"gmd:organisationName",
+              "easyname":"Organisation Name",
+              "desc":"Name of the responsible organisation.",
+              "multi":""
+            },
+            {
+              "name":"gmd:contactInfo",
+              "easyname":"Contact Info",
+              "desc":"Information required enabling contact with the responsible person and/or organisation.",
+              "multi":"",
+              "children":[
+                {
+                  "name":"gmd:CI_Contact",
+                  "easyname":"CI Contact",
+                  "desc":"Information which assists one to contact an individual or organisation.",
+                  "multi":"",
+                  "children":[
+                    {
+                      "name":"gmd:address",
+                      "easyname":"Address",
+                      "desc":"Physical and email address to contact the organisation or individual.",
+                      "multi":"",
+                      "children":[
+                        {
+                          "name":"gmd:CI_Address",
+                          "easyname":"CI Address",
+                          "desc":"Physical and email address at which the organisation or individual may be contacted.",
+                          "multi":"",
+                          "children":[
+                            {
+                              "name":"gmd:deliveryPoint",
+                              "easyname":"Delivery Point",
+                              "desc":"Address line for the location.",
+                              "multi":"yes"
+                            },
+                            {
+                              "name":"gmd:city",
+                              "easyname":"City",
+                              "desc":"City of the address.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:administrativeArea",
+                              "easyname":"Administrative Area",
+                              "desc":"State or province of the address.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:postalCode",
+                              "easyname":"Postal Code",
+                              "desc":"Administrative spatial code which assists mail and parcel delivery.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:country",
+                              "easyname":"Country",
+                              "desc":"Country of the physical address.",
+                              "multi":""
+                            },
+                            {
+                              "name":"gmd:electronicMailAddress",
+                              "easyname":"Electronic Mail Address",
+                              "desc":"The electronic mailbox address of the responsible organisation or individual.",
+                              "multi":"yes"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name":"gmd:role",
+              "easyname":"Role",
+              "desc":"Function performed by the responsible party.",
+              "multi":"",
+              "children":[
+                {
+                  "name":"gmd:CI_RoleCode",
+                  "easyname":"CI Role Code",
+                  "desc":"Function performed by the responsible party.",
+                  "multi":""
+                }
+              ]
+            }
+          ]
+        }
+	
+	
+  ]
+}

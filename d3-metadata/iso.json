@@ -1,112 +1,112 @@
-{
+{  
   "name":"gmd:MD_Metadata",
   "easyname":"MD Metadata",
   "desc":"Root entity that defines information about metadata.",
   "multi":"",
-  "children":[
-    {
+  "children":[  
+    {  
       "name":"gmd:fileIndentifier",
       "easyname":"File Identifier",
       "desc":"A unique phrase or string which uniquely identifies the metadata file.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:language",
       "easyname":"Language",
       "desc":"Language of the metadata composed of an ISO639-2/T three-letter language code and an ISO3166-1 three-letter country code.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:parentIdentifier",
       "easyname":"Parent Identifier",
       "desc":"The unique name of the file or associated fileIdentifier, related in higher hierarchy to the file.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:hierarchyLevel",
       "easyname":"Hierarchy Level",
       "desc":"Level to which the metadata applies.",
       "multi":"yes"
     },
-    {
+    {  
       "name":"gmd:hierarchyLevelName",
       "easyname":"Hierarchy Level Name",
       "desc":"Name of the hierarchy levels for which the metadata is provided.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:contact",
       "easyname":"Contact",
       "desc":"The responsible party for the metadata content.",
       "multi":"yes",
-      "children":[
-        {
+      "children":[  
+        {  
           "name":"gmd:CI_ResponsibleParty",
           "easyname":"CI Responsible Party",
           "desc":"The responsible party for the metadata content.",
           "multi":"The identification of those responsible for the resource and the party’s role in the resource.",
-          "children":[
-            {
+          "children":[  
+            {  
               "name":"gmd:organisationName",
               "easyname":"Organisation Name",
               "desc":"Name of the responsible organisation.",
               "multi":""
             },
-            {
+            {  
               "name":"gmd:contactInfo",
               "easyname":"Contact Info",
               "desc":"Information required enabling contact with the responsible person and/or organisation.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:CI_Contact",
                   "easyname":"CI Contact",
                   "desc":"Information which assists one to contact an individual or organisation.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:address",
                       "easyname":"Address",
                       "desc":"Physical and email address to contact the organisation or individual.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_Address",
                           "easyname":"CI Address",
                           "desc":"Physical and email address at which the organisation or individual may be contacted.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:deliveryPoint",
                               "easyname":"Delivery Point",
                               "desc":"Address line for the location.",
                               "multi":"yes"
                             },
-                            {
+                            {  
                               "name":"gmd:city",
                               "easyname":"City",
                               "desc":"City of the address.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:administrativeArea",
                               "easyname":"Administrative Area",
                               "desc":"State or province of the address.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:postalCode",
                               "easyname":"Postal Code",
                               "desc":"Administrative spatial code which assists mail and parcel delivery.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:country",
                               "easyname":"Country",
                               "desc":"Country of the physical address.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:electronicMailAddress",
                               "easyname":"Electronic Mail Address",
                               "desc":"The electronic mailbox address of the responsible organisation or individual.",
@@ -120,13 +120,13 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:role",
               "easyname":"Role",
               "desc":"Function performed by the responsible party.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:CI_RoleCode",
                   "easyname":"CI Role Code",
                   "desc":"Function performed by the responsible party.",
@@ -138,61 +138,61 @@
         }
       ]
     },
-    {
+    {  
       "name":"gmd:dateStamp",
       "easyname":"Date Stamp",
       "desc":"Metadata creation date.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:metadataStandardName",
       "easyname":"Metadata Standard Name",
       "desc":"Name of the metadata standard/profile used.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:metadataStandardVersion",
       "easyname":"Metadata Standard Version",
       "desc":"Version of the metadata standard/profile used.",
       "multi":""
     },
-    {
+    {  
       "name":"gmd:referenceSystemInfo",
       "easyname":"Reference System Info",
       "desc":"Identification of the spatial and temporal reference systems used.",
       "multi":"",
-      "children":[
-        {
+      "children":[  
+        {  
           "name":"gmd:MD_ReferenceSystem",
           "easyname":"MD Reference System",
           "desc":"Describes the attributes that provide information about reference system information.",
           "multi":"",
-          "children":[
-            {
+          "children":[  
+            {  
               "name":"gmd:referenceSystemIdentifier",
               "easyname":"Reference System Identifier",
               "desc":"Identifier of the Reference System.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:RS_Identifier",
                   "easyname":"RS Identifier",
                   "desc":"Information about the unique identification of an object.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:code",
                       "easyname":"Code",
                       "desc":"The alphanumeric value that identifies a resource",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:codeSpace",
                       "easyname":"Code Space",
                       "desc":"Identifier/namespace of the system in which the code is valid.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:version",
                       "easyname":"Version",
                       "desc":"The cited version.",
@@ -206,61 +206,61 @@
         }
       ]
     },
-    {
+    {  
       "name":"gmd:identificationInfo",
       "easyname":"Identification Info",
       "desc":"Basic information about the dataset.",
       "multi":"",
-      "children":[
-        {
+      "children":[  
+        {  
           "name":"gmd:MD_DataIdentification",
           "easyname":"MD Data Identification",
           "desc":"Information which describes a dataset.",
           "multi":"",
-          "children":[
-            {
+          "children":[  
+            {  
               "name":"gmd:citation",
               "easyname":"Citation",
               "desc":"Citation for the dataset.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:CI_Citation",
                   "easyname":"CI Citation",
                   "desc":"Bibliographic information to reference the resource.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:title",
                       "easyname":"Title",
                       "desc":"Name by which the cited resource is known.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:alternateTitle",
                       "easyname":"Alternate Title",
                       "desc":"Short name or other language name by which the cited information is known.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:date",
                       "easyname":"Date",
                       "desc":"Reference date for the cited resource; reference date and event used to describe it.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_Date",
                           "easyname":"CI Date",
                           "desc":"The date in which the event or action occurred.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:date",
                               "easyname":"Date",
                               "desc":"The date in which the event or action occurred.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:dateType",
                               "easyname":"Date Type",
                               "desc":"Identification of the event used for the temporal aspects in the resource.",
@@ -270,31 +270,31 @@
                         }
                       ]
                     },
-                    {
+                    {  
                       "name":"gmd:identifier",
                       "easyname":"Identifier",
                       "desc":"A unique value that identifies an object in a given namespace.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:RS_Identifier",
                           "easyname":"RS Identifier",
                           "desc":"Information about the unique identification of an object.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:code",
                               "easyname":"Code",
                               "desc":"The alphanumeric value that identifies a resource.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:codeSpace",
                               "easyname":"Code Space",
                               "desc":"Identifier/namespace of the system in which the code is valid.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:version",
                               "easyname":"Version",
                               "desc":"The cited version.",
@@ -304,7 +304,7 @@
                         }
                       ]
                     },
-                    {
+                    {  
                       "name":"gmd:otherCitationDetails",
                       "easyname":"Other Citation Details",
                       "desc":"Other information to complete a citation.",
@@ -314,97 +314,97 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:abstract",
               "easyname":"Abstract",
               "desc":"Brief narrative summary of the dataset’s contents.",
               "multi":""
             },
-            {
+            {  
               "name":"gmd:status",
               "easyname":"Status",
               "desc":"The development phase of the dataset.",
               "multi":"yes"
             },
-            {
+            {  
               "name":"gmd:pointOfContact",
               "easyname":"Point of Contact",
               "desc":"Identification and means to contact people/organisations associated with the dataset.",
               "multi":"yes",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:CI_ResponsibleParty",
                   "easyname":"CI Responsible Party",
                   "desc":"The identification of those responsible for the resource and the party’s role in the resource.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:individualName",
                       "easyname":"Individual Name",
                       "desc":"The name of the responsible individual.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:organisationName",
                       "easyname":"Organisation Name",
                       "desc":"Name of the responsible organisation.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:contactInfo",
                       "easyname":"Contact Info",
                       "desc":"Information required enabling contact with the responsible person and/or organisation.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_Contact",
                           "easyname":"CI Contact",
                           "desc":"Information which assists one to contact an individual or organisation.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:address",
                               "easyname":"Address",
                               "desc":"Physical and email address to contact the organisation or individual.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:CI_Address",
                                   "easyname":"CI Address",
                                   "desc":"Physical and email address at which the organisation or individual may be contacted.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gmd:deliveryPoint",
                                       "easyname":"Delivery Point",
                                       "desc":"Address line for the location.",
                                       "multi":"yes"
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:city",
                                       "easyname":"City",
                                       "desc":"City of the address.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:administrativeArea",
                                       "easyname":"Administrative Area",
                                       "desc":"State or province of the address.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:postalCode",
                                       "easyname":"Postal Code",
                                       "desc":"Administrative spatial code which assists mail and parcel delivery.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:country",
                                       "easyname":"Country",
                                       "desc":"Country of the physical address.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:electronicMailAddress",
                                       "easyname":"Electronic Mail Address",
                                       "desc":"The electronic mailbox address of the responsible organisation or individual.",
@@ -418,13 +418,13 @@
                         }
                       ]
                     },
-                    {
+                    {  
                       "name":"gmd:role",
                       "easyname":"Role",
                       "desc":"Function performed by the responsible party.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_RoleCode",
                           "easyname":"CI Role Code",
                           "desc":"Function performed by the responsible party.",
@@ -436,25 +436,25 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:resourceMaintenance",
               "easyname":"Resource Maintenance",
               "desc":"Describes the frequency, scope, and responsible party for the updating of the dataset.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_MaintenanceInformation",
                   "easyname":"MD Maintenance Information",
                   "desc":"Provides information about how the resources or metadata records are updated.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:maintenanceAndUpdateFrequency",
                       "easyname":"Maintenance and Update Frequency",
                       "desc":"Frequency of changes and additions made to the resource after the initial completion.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:maintenanceNote",
                       "easyname":"Maintenance Note",
                       "desc":"Information regarding specific requirements for maintaining the resource.",
@@ -464,25 +464,25 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:graphicOverview",
               "easyname":"Graphic Overview",
               "desc":"The name of, description of, and file type of an illustration of the dataset.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_BrowseGraphic",
                   "easyname":"MD Browse Graphic",
                   "desc":"The name, description, and file type of an illustration of the resource.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:fileName",
                       "easyname":"File Name",
                       "desc":"Name of the graphic file provided to illustrate the resource.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:fileDescription",
                       "easyname":"File Description",
                       "desc":"Text description of the graphic file’s content.",
@@ -492,67 +492,67 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:descriptiveKeywords",
               "easyname":"Descriptive Keywords",
               "desc":"Commonly used words or phrases which describe the dataset. Optionally, the keyword type and a citation for the authoritative or registered resource of the keywords are also provided.",
               "multi":"yes",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_Keywords",
                   "easyname":"MD Keywords",
                   "desc":"Commonly used words or phrases that describe the resource. Optionally, the keyword type and a citation for the authoritative or registered resource of the keywords are also provided.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:keyword",
                       "easyname":"Keyword",
                       "desc":"Commonly used words or phrases which describe the resource.",
                       "multi":"yes"
                     },
-                    {
+                    {  
                       "name":"gmd:type",
                       "easyname":"Type",
                       "desc":"Terms or type used to group keywords.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:thesaurusName",
                       "easyname":"Thesaurus Name",
                       "desc":"The name of a registered authoritative keyword resource.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_Citation",
                           "easyname":"CI Citation",
                           "desc":"Bibliographic information to reference the resource.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:title",
                               "easyname":"Title",
                               "desc":"Name by which the cited resource is known.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:date",
                               "easyname":"Date",
                               "desc":"Reference date for the cited resource; reference date and event used to describe it.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:CI_Date",
                                   "easyname":"CI Date",
                                   "desc":"The date in which the event or action occurred.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gmd:date",
                                       "easyname":"Date",
                                       "desc":"The date in which the event or action occurred.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:dateType",
                                       "easyname":"Date Type",
                                       "desc":"Identification of the event used for the temporal aspects in the resource.",
@@ -570,31 +570,31 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:resourceConstraints",
               "easyname":"Resource Constraints",
               "desc":"The limitations or constraints on the use of or access to the resource.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_LegalConstraints",
                   "easyname":"MD Legal Constraints",
                   "desc":"The legal restrictions or prerequisites to using the resource or accessing the metadata.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:useLimitation",
                       "easyname":"Use Limitation",
                       "desc":" Statement on the fitness of use or limitations on the use of the resource or metadata.",
                       "multi":"yes"
                     },
-                    {
+                    {  
                       "name":"gmd:accessConstraints",
                       "easyname":"Access Constraints",
                       "desc":"Limitations on access to the resource or metadata to protect privacy, intellectual property, or any special limitations.",
                       "multi":"yes"
                     },
-                    {
+                    {  
                       "name":"gmd:otherConstraints",
                       "easyname":"Other Constraints",
                       "desc":"Other restrictions or legal prerequisites for accessing the resource or metadata.",
@@ -604,25 +604,25 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:spatialRepresentationType",
               "easyname":"Spatial Representation Type",
               "desc":"Object(s) used to represent the geographic information.",
               "multi":""
             },
-            {
+            {  
               "name":"gmd:spatialResolution",
               "easyname":"Spatial Resolution",
               "desc":"The level of detail of the dataset expressed as equivalent scale or ground distance",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_Resolution",
                   "easyname":"MD Resolution",
                   "desc":"The level of detail in a dataset expressed as equivalent scale or ground distance.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:distance",
                       "easyname":"Distance",
                       "desc":"Ground sample distance.",
@@ -632,67 +632,67 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:language",
               "easyname":"Language",
               "desc":"Languages of the dataset using standard ISO three-letter codes. See Annex B.",
               "multi":""
             },
-            {
+            {  
               "name":"gmd:topicCategory",
               "easyname":"Topic Category",
               "desc":"The main theme(s) of the dataset.",
               "multi":"yes"
             },
-            {
+            {  
               "name":"gmd:extent",
               "easyname":"Extent",
               "desc":"Describes the spatial, horizontal and/or vertical, and the temporal coverage in the resource.",
               "multi":"yes",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:EX_Extent",
                   "easyname":"EX Extent",
                   "desc":"Information about horizontal, vertical, and temporal extent.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:geographicElement",
                       "easyname":"Geographic Element",
                       "desc":"Provides geographic component of the extent of the referring object.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:EX_GeographicDescription",
                           "easyname":"EX Geographic Description",
                           "desc":"Description of the geographic area using identifiers.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:geographicIdentifier",
                               "easyname":"Geographic Identifier",
                               "desc":"Identifier used to represent a geographic area.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:RS_Identifier",
                                   "easyname":"RS Identifier",
                                   "desc":"Information about the unique identification of an object.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gmd:code",
                                       "easyname":"Code",
                                       "desc":"The alphanumeric value that identifies a resource.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:codeSpace",
                                       "easyname":"Code Space",
                                       "desc":"Identifier/namespace of the system in which the code is valid.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gmd:version",
                                       "easyname":"Version",
                                       "desc":"The cited version.",
@@ -710,49 +710,49 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:extent",
               "easyname":"Extent",
               "desc":"Describes the spatial, horizontal and/or vertical, and the temporal coverage in the resource",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:EX_Extent",
                   "easyname":"EX Extent",
                   "desc":"Information about horizontal, vertical, and temporal extent.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:temporalElement",
                       "easyname":"Temporal Element",
                       "desc":"Provides temporal component of the extent of the referring object.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:EX_TemporalExtent",
                           "easyname":"EX Temporal Extent",
                           "desc":"Time period covered by the content of the dataset.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:extent",
                               "easyname":"Extent",
                               "desc":"Date and time for the content of the dataset.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gml:timePeriod",
                                   "easyname":"Time Period",
                                   "desc":"Represents an identifiable extent in time.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gml:beginPosition",
                                       "easyname":"Begin Position",
                                       "desc":"The beginning date and time of the dataset’s content.",
                                       "multi":""
                                     },
-                                    {
+                                    {  
                                       "name":"gml:endPosition",
                                       "easyname":"End Position",
                                       "desc":"The ending date and time of the content of the dataset.",
@@ -770,55 +770,55 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:extent",
               "easyname":"Extent",
               "desc":"Describes the spatial, horizontal and/or vertical, and the temporal coverage in the resource",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:EX_Extent",
                   "easyname":"EX Extent",
                   "desc":"Information about horizontal, vertical, and temporal extent.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:geographicElement",
                       "easyname":"Geographic Element",
                       "desc":"Provides geographic component of the extent of the referring object.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:EX_GeographicBoundingBox",
                           "easyname":"EX Geographic Bounding Box",
                           "desc":"Geographic position of the dataset.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:extentTypeCode",
                               "easyname":"Extent Type Code",
                               "desc":"Indication of whether the bounding polygon encompasses an area covered by the data or an area where data is not present.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:westBoundLongitude",
                               "easyname":"West Bound Longitude",
                               "desc":"Westernmost coordinate of the limit of the dataset extent, expressed in longitude in decimal degrees",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:eastBoundLongitude",
                               "easyname":"East Bound Longitude",
                               "desc":"Easternmost coordinate of the limit of the dataset extent, expressed in longitude in decimal degrees.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:southBoundLatitude",
                               "easyname":"South Bound Latitude",
                               "desc":"– Southernmost coordinate of the limit of the dataset extent, expressed in latitude in decimal degrees",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:northBoundLatitude",
                               "easyname":"North Bound Latitude",
                               "desc":"Northernmost coordinate of the limit of the dataset extent, expressed in latitude in decimal degrees.",
@@ -832,7 +832,7 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:supplementalInformation",
               "easyname":"Supplemental Information",
               "desc":"Other descriptive information about the dataset.",
@@ -842,37 +842,37 @@
         }
       ]
     },
-    {
+    {  
       "name":"gmd:distributionInfo",
       "easyname":"Distribution Info",
       "desc":"Information about acquiring the dataset.",
       "multi":"",
-      "children":[
-        {
+      "children":[  
+        {  
           "name":"gmd:MD_Distribution",
           "easyname":"MD Distribution",
           "desc":"Information about the data distributor and options to obtain the dataset.",
           "multi":"",
-          "children":[
-            {
+          "children":[  
+            {  
               "name":"gmd:distributionFormat",
               "easyname":"Distribution Format",
               "desc":"Description of distribution format.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_Format",
                   "easyname":"MD Format",
                   "desc":"Description of the computer language construct that specifies the representation of data objects in a record, file, message, storage device, or transmission channel.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:name",
                       "easyname":"Name",
                       "desc":"Name of the data transfer format.",
                       "multi":""
                     },
-                    {
+                    {  
                       "name":"gmd:version",
                       "easyname":"Version",
                       "desc":"Version of the format (date, number, etc).",
@@ -882,91 +882,91 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:distributor",
               "easyname":"Distributor",
               "desc":"Information about the data distributor.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_Distributor",
                   "easyname":"MD Distributor",
                   "desc":"Information about the distributor.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:distibutorContact",
                       "easyname":"Distributor Contact",
                       "desc":"Information on the party responsible for distribution",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_ResponsibleParty",
                           "easyname":"CI Responsible Party",
                           "desc":"The identification of those responsible for the resource and the party’s role in the resource.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:organisationName",
                               "easyname":"Organisation Name",
                               "desc":"Name of the responsible organisation.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:contactInfo",
                               "easyname":"Contact Info",
                               "desc":"Information required enabling contact with the responsible person and/or organisation.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:CI_Contact",
                                   "easyname":"CI Contact",
                                   "desc":"Information which assists one to contact an individual or organisation.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gmd:address",
                                       "easyname":"Address",
                                       "desc":"Physical and email address to contact the organisation or individual.",
                                       "multi":"",
-                                      "children":[
-                                        {
+                                      "children":[  
+                                        {  
                                           "name":"gmd:CI_Address",
                                           "easyname":"CI Address",
                                           "desc":"Physical and email address at which the organisation or individual may be contacted.",
                                           "multi":"",
-                                          "children":[
-                                            {
+                                          "children":[  
+                                            {  
                                               "name":"gmd:deliveryPoint",
                                               "easyname":"Delivery Point",
                                               "desc":"Address line for the location.",
                                               "multi":"yes"
                                             },
-                                            {
+                                            {  
                                               "name":"gmd:city",
                                               "easyname":"City",
                                               "desc":"City of the address.",
                                               "multi":""
                                             },
-                                            {
+                                            {  
                                               "name":"gmd:administrativeArea",
                                               "easyname":"Administrative Area",
                                               "desc":"State or province of the address.",
                                               "multi":""
                                             },
-                                            {
+                                            {  
                                               "name":"gmd:postalCode",
                                               "easyname":"Postal Code",
                                               "desc":"Administrative spatial code which assists mail and parcel delivery.",
                                               "multi":""
                                             },
-                                            {
+                                            {  
                                               "name":"gmd:country",
                                               "easyname":"County",
                                               "desc":"Country of the physical address.",
                                               "multi":""
                                             },
-                                            {
+                                            {  
                                               "name":"gmd:electronicMailAddress",
                                               "easyname":"Electronic Mail Address",
                                               "desc":"The electronic mailbox address of the responsible organisation or individual.",
@@ -980,13 +980,13 @@
                                 }
                               ]
                             },
-                            {
+                            {  
                               "name":"gmd:role",
                               "easyname":"Role",
                               "desc":"Function performed by the responsible party.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:CI_RoleCode",
                                   "easyname":"CI Role Code",
                                   "desc":"Function performed by the responsible party.",
@@ -1002,37 +1002,37 @@
                 }
               ]
             },
-            {
+            {  
               "name":"gmd:transferOptions",
               "easyname":"Transfer Options",
               "desc":"The means and media by which the data/dataset is obtained from the distributor.",
               "multi":"yes",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:MD_DigitalTransferOptions",
                   "easyname":"MD Digital Transfer Options",
                   "desc":"Technical means and media by which a resource is obtained from the distributor.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:onLine",
                       "easyname":"Online",
                       "desc":"Information about the online sources where the data/dataset may be obtained.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:CI_OnlineResource",
                           "easyname":"CI Online Resource",
                           "desc":"Information on the Internet available resource.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:linkage",
                               "easyname":"Linkage",
                               "desc":"Internet location (address) for on-line access which uses a Uniform Resource Locator address or similar addressing scheme.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:URL",
                                   "easyname":"URL",
                                   "desc":"A uniform resource locator.",
@@ -1040,19 +1040,19 @@
                                 }
                               ]
                             },
-                            {
+                            {  
                               "name":"gmd:name",
                               "easyname":"Name",
                               "desc":"Name of the online resource.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:description",
                               "easyname":"Description",
                               "desc":"Description of the online resource that provides the resource sought.",
                               "multi":""
                             },
-                            {
+                            {  
                               "name":"gmd:function",
                               "easyname":"Function",
                               "desc":"Code for function performed by the online resource.",
@@ -1070,61 +1070,61 @@
         }
       ]
     },
-    {
+    {  
       "name":"gmd:dataQualityInfo",
       "easyname":"Data Quality Info",
       "desc":"Information on the quality of the data that is specified by a data quality scope.",
       "multi":"",
-      "children":[
-        {
+      "children":[  
+        {  
           "name":"gmd:CI_ResponsibleParty",
           "easyname":"CI Responsible Party",
           "desc":"The identification of those responsible for the resource and the party’s role in the resource.",
           "multi":"",
-          "children":[
-            {
+          "children":[  
+            {  
               "name":"gmd:DQ_DataQuality",
               "easyname":"DQ Data Quality",
               "desc":"Information on the quality of the data that is specified by a data quality scope.",
               "multi":"",
-              "children":[
-                {
+              "children":[  
+                {  
                   "name":"gmd:scope",
                   "easyname":"Scope",
                   "desc":"The extent of characteristics for which data quality information is reported.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:DQ_scope",
                       "easyname":"DQ Scope",
                       "desc":"The extent of characteristics for which data quality information is reported.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:level",
                           "easyname":"Level",
                           "desc":"The data or application level for which data quality is described.",
                           "multi":""
                         },
-                        {
+                        {  
                           "name":"gmd:levelDescription",
                           "easyname":"Level Description",
                           "desc":"Description of the level of the dataset.",
                           "multi":"",
-                          "children":[
-                            {
+                          "children":[  
+                            {  
                               "name":"gmd:CI_ResponsibleParty",
                               "easyname":"CI Responsible Party",
                               "desc":"The identification of those responsible for the resource and the party’s role in the resource.",
                               "multi":"",
-                              "children":[
-                                {
+                              "children":[  
+                                {  
                                   "name":"gmd:MD_ScopeDescription",
                                   "easyname":"MD Scope Description",
                                   "desc":"Description of the class of information covered by the information.",
                                   "multi":"",
-                                  "children":[
-                                    {
+                                  "children":[  
+                                    {  
                                       "name":"gmd:other",
                                       "easyname":"Other",
                                       "desc":"Class of information that does not fall into the other categories to which the information applies.",
@@ -1140,19 +1140,19 @@
                     }
                   ]
                 },
-                {
+                {  
                   "name":"gmd:lineage",
                   "easyname":"Lineage",
                   "desc":"Information or lack of information on the events and source data used to construct the dataset within the specified Scope.",
                   "multi":"",
-                  "children":[
-                    {
+                  "children":[  
+                    {  
                       "name":"gmd:LI_Lineage",
                       "easyname":"LI Lineage",
                       "desc":"Information or lack of information on the events and source data use to construct the dataset within the specified Scope.",
                       "multi":"",
-                      "children":[
-                        {
+                      "children":[  
+                        {  
                           "name":"gmd:statement",
                           "easyname":"Statement",
                           "desc":"General explanation of the data producer’s knowledge of the dataset lineage.",

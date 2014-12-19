@@ -1,4 +1,18 @@
 $(function() {
+
+    //  Get the parameter value after the # symbol
+    var url=document.URL.split('?')[1];
+	console.log(typeof(url))
+    if(url == undefined){
+        url = '';
+		//alert("Nothing entered")
+    }
+ 
+    // If the parameter exists create the message and insert into our paragraph
+    if(url != ''){
+        var message = 'You clicked '+url;
+        //alert(url);
+    }
 	
 	/* ------------------------------------
 
@@ -141,7 +155,7 @@ function rescale() {
 		  .on("mousedown", mousedown)
 		.attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-	d3.json("iso.json", function (json) {
+	d3.json("iso_ci.json", function (json) {
 		root = json;
 		root.x0 = h / 2;
 		root.y0 = 0;
@@ -276,17 +290,7 @@ function rescale() {
 		var link = vis.selectAll("path.link")
 			.data(tree.links(nodes), function (d) {
 			return d.target.id;
-			})
-			/*.each(function(d){
-			  if(d.source.multi == "yes"){
-			    console.log(d.source)
-				link.enter().insert("svg:path", "g")
-				  .style("fill", function (d) {
-					return '#ff0000';
-				})
-			  }
-			  });*/
-		
+			})		
 
 		// Enter any new links at the parent's previous position.
 		link.enter().insert("svg:path", "g")
@@ -350,7 +354,6 @@ function rescale() {
 					toggle(d);
 				}
 			  }
-			console.log("Inside click function");
 		    if(window.event.altKey){
 			  if (d._children){
 			    d._children.forEach(toggleRow);
@@ -418,14 +421,28 @@ function rescale() {
 	  slice = fullName.slice(0,2) + "_";
 	  $(fullNameTag).css("background", "lightgrey");
 	  var node = d3.selectAll("g.node")
-	     .forEach(function(c) { console.log((c.name)) })
-	  //node = d3.selectAll("[id='" + d.name + "']")
+	  for (i = 0; i < node[0].length; i++) { 
+		prefix = node[0][i].id.slice(4,7).toLowerCase();
+		if (prefix == ($(this).attr('id')+"_")){
+		  d3.select(node[0][i]).select("text")
+		    .style("font-size", function (d) {
+	          return '20';
+	        })
+	        .style("fill", function (d) {
+	          return '#ff0000';
+	        })
+		  }
+      }
 	});
 	
 	$('.rowAbbr').mouseout(function() {  
 	  $(this).css("background", "white");
 	  fullNameTag = ('#' + fullName)
 	  $(fullNameTag).css("background", "white");
+	  var node = d3.selectAll("g.node")
+	  node.selectAll("text")
+	     .style("font-size", function (d) { return '10'; })
+		  .style("fill", function (d) { return '#000'; })
 	});
 	
 	$('.rowAbbr').on("click", function() {
@@ -436,18 +453,32 @@ function rescale() {
 	  abbrName = $(this).attr('id').slice(0,-4);
 	  $(this).css("background", "lightgrey");
 	  abbrNameTag = ('#' + abbrName)
-	  //text = $(fullNameTag).text();
-	  //slice = fullName.slice(0,2) + "_";
 	  $(abbrNameTag).css("background", "lightgrey");
-	  //var node = d3.selectAll("g.node")
-	     //.forEach(function(c) { console.log((c.name)) })*/
-	  //node = d3.selectAll("[id='" + d.name + "']")
+	  var node = d3.selectAll("g.node")
+	  console.log(node);
+	  for (i = 0; i < node[0].length; i++) { 
+		prefix = node[0][i].id.slice(4,7).toLowerCase();
+		if (prefix == ($(this).attr('id').slice(0,2)+"_")){
+		  d3.select(node[0][i]).select("text")
+		    .style("font-size", function (d) {
+	          return '20';
+	        })
+	        .style("fill", function (d) {
+	          return '#ff0000';
+	        })
+		  }
+      }
+
 	});
 	
 	$('.rowFullName').mouseout(function() {  
 	  $(this).css("background", "white");
 	  abbrNameTag = ('#' + abbrName)
 	  $(abbrNameTag).css("background", "white");
+	  var node = d3.selectAll("g.node")
+	  node.selectAll("text")
+	     .style("font-size", function (d) { return '10'; })
+		  .style("fill", function (d) { return '#000'; })
 	});
 	
 	
