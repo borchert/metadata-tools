@@ -101,19 +101,19 @@
           "multi":"",
 		  "children":[
 		    {  
-          "name":"gmd:Date",
-          "easyname":"Date",
-          "desc":"",
-          "multi":""
-		  },
-		  {  
-          "name":"gmd:DateTime",
-          "easyname":"Date Time",
-          "desc":"",
-          "multi":""
-		  }
-		  
-		  ]
+			  "name":"gmd:Date",
+			  "easyname":"Date",
+			  "desc":"",
+			  "multi":""
+			  },
+			  {  
+			  "name":"gmd:DateTime",
+			  "easyname":"Date Time",
+			  "desc":"",
+			  "multi":""
+			  }
+			  
+			]
 		  
         },
         {  
@@ -129,14 +129,14 @@
           "multi":"",
 		  "children":[
 		    {  
-          "name":"gmd:MD_Identifier",
-          "easyname":"Date",
-          "desc":"",
-          "multi":""
-		  }
+			  "name":"gmd:MD_Identifier",
+			  "easyname":"Date",
+			  "desc":"",
+			  "multi":""
+			  }
 		  
 		  ]
-        },
+        }
       ]
     },
     {  
